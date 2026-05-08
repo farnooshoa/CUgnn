@@ -1,0 +1,5 @@
+task,features,roc_auc,balanced_accuracy,notes
+tumor_vs_normal,expr_only,0.993,0.913,baseline
+tumor_vs_normal,expr_plus_meth,0.9967843335240595,0.9120222372205069,this run
+stage_early_vs_late,expr_only,0.668,0.525,baseline
+stage_early_vs_late,expr_plus_meth,0.6666324534011897,0.518014098075934,this run

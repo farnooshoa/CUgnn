@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TCGA-LIHC Copper Proteome Interactive Network</title>
+<script src="https://unpkg.com/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
+<script src="https://unpkg.com/layout-base@2.0.1/layout-base.js"></script>
+<script src="https://unpkg.com/cose-base@2.2.0/cose-base.js"></script>
+<script src="https://unpkg.com/cytoscape-fcose@2.2.0/cytoscape-fcose.js"></script>
+<script src="https://unpkg.com/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/cytoscape-popper@2.0.0/cytoscape-popper.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fafafa; }
+  #app { display: grid; grid-template-columns: 260px 1fr; grid-template-rows: 48px 1fr; height: 100vh; }
+  #header { grid-column: 1 / 3; display: flex; align-items: center; justify-content: space-between;
+             padding: 0 16px; background: #1a237e; color: white; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+  #header h1 { margin: 0; font-size: 16px; font-weight: 500; }
+  #header .subtitle { font-size: 12px; opacity: 0.8; }
+  #sidebar { border-right: 1px solid #e0e0e0; overflow-y: auto; padding: 12px; background: white; }
+  #cy { width: 100%; height: 100%; background: #fafafa; position: relative; }
+
+  .panel { margin-bottom: 16px; }
+  .panel h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+              color: #555; margin: 0 0 8px; border-bottom: 1px solid #eee; padding-bottom: 4px; }
+  .control-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 13px; }
+  .control-row input[type=search] { flex: 1; padding: 4px 6px; border: 1px solid #ddd; border-radius: 3px; font-size: 12px; }
+  .control-row button { padding: 4px 8px; border: 1px solid #ccc; background: #f5f5f5; border-radius: 3px; cursor: pointer; font-size: 12px; }
+  .control-row button:hover { background: #eee; }
+  .control-row label { flex: 1; font-size: 12px; color: #333; cursor: pointer; }
+  .control-row input[type=checkbox] { cursor: pointer; }
+
+  .legend-item { display: flex; align-items: center; gap: 8px; margin: 4px 0; font-size: 12px; }
+  .swatch { width: 18px; height: 18px; border-radius: 3px; flex-shrink: 0; border: 1px solid #aaa; }
+  .swatch.round { border-radius: 50%; }
+  .edge-swatch { width: 28px; height: 3px; flex-shrink: 0; }
+
+  #tooltip { position: absolute; background: rgba(30, 30, 40, 0.96); color: white;
+             padding: 10px 12px; border-radius: 6px; font-size: 12px; line-height: 1.4;
+             pointer-events: none; max-width: 320px; box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+             z-index: 1000; display: none; }
+  #tooltip .tip-title { font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+  #tooltip .tip-row { display: flex; justify-content: space-between; gap: 10px; }
+  #tooltip .tip-label { color: #bbb; }
+  #tooltip .tip-value { color: white; font-family: ui-monospace, monospace; }
+  #tooltip .up { color: #ff8a80; }
+  #tooltip .down { color: #80d8ff; }
+
+  #info { position: absolute; top: 8px; right: 8px; background: white; border: 1px solid #e0e0e0;
+          padding: 6px 10px; border-radius: 4px; font-size: 11px; color: #666; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="header">
+    <div>
+      <h1>TCGA-LIHC Copper Proteome — Interactive Network</h1>
+      <div class="subtitle">54 Cu genes · node size = GNN importance · node colour = LIHC log2FC · edge width = GAT attention</div>
+    </div>
+  </div>
+
+  <div id="sidebar">
+    <div class="panel">
+      <h3>Search</h3>
+      <div class="control-row">
+        <input id="search" type="search" placeholder="gene symbol, e.g. ATOX1">
+      </div>
+      <div class="control-row">
+        <button id="fit">Fit view</button>
+        <button id="reset">Reset highlight</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Highlight</h3>
+      <div class="control-row">
+        <input type="checkbox" id="hl_top_nodes" checked>
+        <label for="hl_top_nodes">Top-10 important genes (thick border)</label>
+      </div>
+      <div class="control-row">
+        <input type="checkbox" id="hl_top_edges" checked>
+        <label for="hl_top_edges">Top-15 attention edges (bold)</label>
+      </div>
+      <div class="control-row">
+        <input type="checkbox" id="hl_bio" checked>
+        <label for="hl_bio">Canonical Cu-biology edges (red glow)</label>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Edge types — show/hide</h3>
+      <div class="control-row">
+        <input type="checkbox" id="show_physical" checked>
+        <label for="show_physical">physical</label>
+        <span class="edge-swatch" style="background:#d32f2f"></span>
+      </div>
+      <div class="control-row">
+        <input type="checkbox" id="show_coexpression" checked>
+        <label for="show_coexpression">co-expression</label>
+        <span class="edge-swatch" style="background:#7b1fa2"></span>
+      </div>
+      <div class="control-row">
+        <input type="checkbox" id="show_genetic" checked>
+        <label for="show_genetic">genetic</label>
+        <span class="edge-swatch" style="background:#2e7d32"></span>
+      </div>
+      <div class="control-row">
+        <input type="checkbox" id="show_shared_compartment" checked>
+        <label for="show_shared_compartment">shared compartment</label>
+        <span class="edge-swatch" style="background:#9e9e9e"></span>
+      </div>
+      <div class="control-row">
+        <input type="checkbox" id="show_attention_only" checked>
+        <label for="show_attention_only">attention-only edges (not in graph)</label>
+        <span class="edge-swatch" style="background:#1565c0;border-bottom:1px dashed #1565c0"></span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Node colour — log2FC</h3>
+      <div class="legend-item"><span class="swatch round" style="background:#b22222"></span>up in tumor</div>
+      <div class="legend-item"><span class="swatch round" style="background:#f5f5f5"></span>unchanged</div>
+      <div class="legend-item"><span class="swatch round" style="background:#1f4e79"></span>down in tumor</div>
+    </div>
+
+    <div class="panel">
+      <h3>Node shape — category</h3>
+      <div class="legend-item"><span class="swatch" style="border-radius:50%;background:#f5f5f5"></span>transporter (circle)</div>
+      <div class="legend-item"><span class="swatch" style="border-radius:4px;background:#f5f5f5"></span>enzyme (rounded square)</div>
+      <div class="legend-item"><span class="swatch" style="background:#f5f5f5;clip-path:polygon(50% 0,100% 100%,0 100%)"></span>other (triangle)</div>
+    </div>
+
+    <div class="panel">
+      <h3>Interact</h3>
+      <div style="font-size:11px;color:#666;line-height:1.5">
+        • drag nodes to rearrange<br>
+        • scroll to zoom<br>
+        • click-drag background to pan<br>
+        • hover over a node or edge for details<br>
+        • click a node to pin its tooltip
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Stats</h3>
+      <div style="font-size:11px;color:#666" id="stats"></div>
+    </div>
+  </div>
+
+  <div id="cy">
+    <div id="info">Right-click / hover for tooltip. Scroll to zoom.</div>
+    <div id="tooltip"></div>
+  </div>
+</div>
+
+<script>
+const DATA = {"nodes": [{"data": {"id": "SLC31A1", "label": "SLC31A1", "category": "transporter", "localization": "cell_membrane", "notes": "Major plasma-membrane Cu importer", "log2FC": -1.077512093455419, "adj_p": 2.561989241584861e-34, "p_value": 9.488849042906894e-36, "significant": true, "importance": 0.5156437599658966, "importance_norm": 0.29157725819495445, "module": 5, "is_top_importance": false}}, {"data": {"id": "SLC31A2", "label": "SLC31A2", "category": "transporter", "localization": "cell_membrane", "notes": "Second Cu importer at the cell surface", "log2FC": -0.0415840488633419, "adj_p": 0.0019725372226712, "p_value": 0.0013387770753004, "significant": true, "importance": 0.1523492832109332, "importance_norm": 0.08614782090943647, "module": 0, "is_top_importance": false}}, {"data": {"id": "ATP7A", "label": "ATP7A", "category": "transporter", "localization": "cell_membrane|golgi_apparatus", "notes": "P1B-type ATPase; Menkes-disease gene; channels Cu into the secretory pathway", "log2FC": 0.1211624218744787, "adj_p": 8.265634878967367e-05, "p_value": 4.592019377204093e-05, "significant": true, "importance": 0.4061134774982929, "importance_norm": 0.2296419805270254, "module": 0, "is_top_importance": false}}, {"data": {"id": "ATP7B", "label": "ATP7B", "category": "transporter", "localization": "golgi_apparatus", "notes": "P1B-type ATPase; Wilson-disease gene; upregulated in breast cancer", "log2FC": -0.3619658642866279, "adj_p": 1.96266500364016e-07, "p_value": 8.722955571734043e-08, "significant": true, "importance": 0.7082189940661192, "importance_norm": 0.40047134964853487, "module": 0, "is_top_importance": true}}, {"data": {"id": "ATOX1", "label": "ATOX1", "category": "transporter", "localization": "cytoplasm", "notes": "Cu chaperone to ATP7A/B; proposed transcription factor for cyclin D1 and SOD3; IHC-validated upregulation in breast tumor", "log2FC": 0.4709736757844647, "adj_p": 6.094717971617539e-07, "p_value": 2.821628690563675e-07, "significant": true, "importance": 1.052883627414703, "importance_norm": 0.595366307351884, "module": 0, "is_top_importance": true}}, {"data": {"id": "CCS", "label": "CCS", "category": "transporter", "localization": "cytoplasm", "notes": "Delivers Cu to SOD1; also reported in nucleus; regulates HIF-1", "log2FC": -0.4874551391873423, "adj_p": 6.083936704658339e-09, "p_value": 2.591306374206329e-09, "significant": true, "importance": 0.3453425197303295, "importance_norm": 0.19527827709534598, "module": 5, "is_top_importance": false}}, {"data": {"id": "COX11", "label": "COX11", "category": "transporter", "localization": "mitochondrion", "notes": "Provides Cu to COX1/COX2 in mitochondria", "log2FC": 0.0360832240423838, "adj_p": 0.3793471665432383, "p_value": 0.3512473764289243, "significant": false, "importance": 0.2215396270155906, "importance_norm": 0.12527237221102216, "module": 2, "is_top_importance": false}}, {"data": {"id": "COX17", "label": "COX17", "category": "transporter", "localization": "mitochondrion", "notes": "Chaperone upstream of SCO1/SCO2/COX11", "log2FC": 0.0314257648006988, "adj_p": 0.6528631547622626, "p_value": 0.6407730963407392, "significant": false, "importance": 0.1226529832929372, "importance_norm": 0.06935567411957326, "module": 2, "is_top_importance": false}}, {"data": {"id": "SCO1", "label": "SCO1", "category": "transporter", "localization": "mitochondrion", "notes": "Mitochondrial Cu delivery; Cu-binding thioredoxin-fold", "log2FC": -0.3547010264403987, "adj_p": 3.428509860811418e-16, "p_value": 7.618910801803151e-17, "significant": true, "importance": 0.311535438299179, "importance_norm": 0.17616163712685234, "module": 2, "is_top_importance": false}}, {"data": {"id": "SCO2", "label": "SCO2", "category": "transporter", "localization": "mitochondrion", "notes": "Upregulated in breast cancer; Cu to COX2", "log2FC": 0.0883457365406484, "adj_p": 0.0012346737598266, "p_value": 0.0008002515109987, "significant": true, "importance": 0.268611786738038, "importance_norm": 0.15188991776241975, "module": 2, "is_top_importance": false}}, {"data": {"id": "COMMD1", "label": "COMMD1", "category": "transporter", "localization": "cytoplasm|nucleus", "notes": "Regulates ATP7B stability and Cu-vesicle trafficking", "log2FC": -0.1092108445469408, "adj_p": 0.0399029855843789, "p_value": 0.0325135438094939, "significant": true, "importance": 0.5747291871905327, "importance_norm": 0.3249878571529954, "module": 6, "is_top_importance": false}}, {"data": {"id": "CUTC", "label": "CUTC", "category": "transporter", "localization": "cytoplasm|nucleus", "notes": "Status as transporter vs enzyme is open per paper", "log2FC": -0.2324382658358859, "adj_p": 1.5361729514321418e-06, "p_value": 7.396388284673276e-07, "significant": true, "importance": 0.59134501516819, "importance_norm": 0.33438348634607395, "module": 6, "is_top_importance": false}}, {"data": {"id": "AOC1", "label": "AOC1", "category": "enzyme", "localization": "extracellular_space", "notes": "Cu-containing amine oxidase", "log2FC": -1.0863014259386046, "adj_p": 1.785625755496157e-05, "p_value": 9.589471649886768e-06, "significant": true, "importance": 0.2980980579555035, "importance_norm": 0.16856330117842389, "module": 7, "is_top_importance": false}}, {"data": {"id": "AOC2", "label": "AOC2", "category": "enzyme", "localization": "cell_membrane", "notes": "Cu amine oxidase; low mRNA-protein correlation in breast", "log2FC": 0.1674776426255949, "adj_p": 4.270505946218904e-06, "p_value": 2.21433641655795e-06, "significant": true, "importance": 0.3221790514886379, "importance_norm": 0.18218020225265805, "module": 7, "is_top_importance": false}}, {"data": {"id": "AOC3", "label": "AOC3", "category": "enzyme", "localization": "cell_membrane", "notes": "Cu amine oxidase; frequently downregulated; blue in Fig 3 cluster 8", "log2FC": -0.7076178513510278, "adj_p": 1.6229273704998855e-16, "p_value": 3.00542105648127e-17, "significant": true, "importance": 0.6435129931569099, "importance_norm": 0.36388252651390546, "module": 7, "is_top_importance": false}}, {"data": {"id": "CP", "label": "CP", "category": "enzyme", "localization": "extracellular_space", "notes": "Ferroxidase; main plasma Cu carrier; oxidises iron and delivers Cu", "log2FC": -2.064352133077395, "adj_p": 6.791567155160983e-32, "p_value": 3.773092863978324e-33, "significant": true, "importance": 1.7684635734558103, "importance_norm": 1.0, "module": 3, "is_top_importance": true}}, {"data": {"id": "DBH", "label": "DBH", "category": "enzyme", "localization": "extracellular_space", "notes": "Cu-dependent monooxygenase", "log2FC": -2.839419272595147, "adj_p": 2.12365250851322e-28, "p_value": 1.9663449152900186e-29, "significant": true, "importance": 0.622465147972107, "importance_norm": 0.35198075737332163, "module": 8, "is_top_importance": false}}, {"data": {"id": "ENOX1", "label": "ENOX1", "category": "enzyme", "localization": "cell_membrane|extracellular_space", "notes": "Frequently downregulated across cancers", "log2FC": 0.2433373859554329, "adj_p": 4.964159468617976e-12, "p_value": 1.838577580969621e-12, "significant": true, "importance": 0.1817190546542406, "importance_norm": 0.10275532806092108, "module": 11, "is_top_importance": false}}, {"data": {"id": "ENOX2", "label": "ENOX2", "category": "enzyme", "localization": "cell_membrane|extracellular_space", "notes": "Frequently upregulated; low mRNA-protein correlation", "log2FC": 0.1621243125906142, "adj_p": 0.0007562905741225, "p_value": 0.0004761829540771, "significant": true, "importance": 0.2101917479932308, "importance_norm": 0.11885557110033569, "module": 12, "is_top_importance": false}}, {"data": {"id": "HEPH", "label": "HEPH", "category": "enzyme", "localization": "cell_membrane", "notes": "Multicopper ferroxidase; ceruloplasmin homolog", "log2FC": -0.1610172605629252, "adj_p": 0.003682683013275, "p_value": 0.0025915176760083, "significant": true, "importance": 0.169414976760745, "importance_norm": 0.09579783225598809, "module": 3, "is_top_importance": false}}, {"data": {"id": "HEPHL1", "label": "HEPHL1", "category": "enzyme", "localization": "cell_membrane", "notes": "Upregulated in breast cancer", "log2FC": 0.0257693075340696, "adj_p": 0.0162388623851886, "p_value": 0.0129309459733909, "significant": true, "importance": 0.1350329598039388, "importance_norm": 0.07635608775365764, "module": 3, "is_top_importance": false}}, {"data": {"id": "LOX", "label": "LOX", "category": "enzyme", "localization": "extracellular_space", "notes": "ECM crosslinker; key for premetastatic niche; HIF-1 target", "log2FC": 0.6136898162341078, "adj_p": 1.341560907872569e-13, "p_value": 4.4718696929085625e-14, "significant": true, "importance": 0.8084073032438756, "importance_norm": 0.4571240908650108, "module": 1, "is_top_importance": true}}, {"data": {"id": "LOXL1", "label": "LOXL1", "category": "enzyme", "localization": "extracellular_space", "notes": "Upregulated in breast (cluster 8)", "log2FC": 0.3352326273426053, "adj_p": 0.0005228884695501, "p_value": 0.0003098598338075, "significant": true, "importance": 0.532670119702816, "importance_norm": 0.30120502774162805, "module": 1, "is_top_importance": false}}, {"data": {"id": "LOXL2", "label": "LOXL2", "category": "enzyme", "localization": "nucleus|extracellular_space", "notes": "Upregulated in breast (cluster 8); also has nuclear role", "log2FC": 1.0081738212406686, "adj_p": 3.556185711368363e-27, "p_value": 3.951317457075959e-28, "significant": true, "importance": 0.5639286640286446, "importance_norm": 0.31888056530712355, "module": 1, "is_top_importance": false}}, {"data": {"id": "LOXL3", "label": "LOXL3", "category": "enzyme", "localization": "cytoplasm|extracellular_space", "notes": "ECM crosslinker family", "log2FC": 0.034778412866181, "adj_p": 0.3434907588154371, "p_value": 0.3116860589251189, "significant": false, "importance": 0.3261541740596294, "importance_norm": 0.18442798537392616, "module": 1, "is_top_importance": false}}, {"data": {"id": "LOXL4", "label": "LOXL4", "category": "enzyme", "localization": "extracellular_space", "notes": "ECM crosslinker family", "log2FC": 0.727684573313081, "adj_p": 0.0005953279613319, "p_value": 0.0003638115319251, "significant": true, "importance": 0.8875138309597969, "importance_norm": 0.5018558732456548, "module": 1, "is_top_importance": true}}, {"data": {"id": "MAP2K1", "label": "MAP2K1", "category": "enzyme", "localization": "cytoskeleton|cytoplasm|nucleus", "notes": "Cu-dependent kinase in MAPK pathway; proliferation/invasion; added to list from literature", "log2FC": -1.0216175647155137, "adj_p": 1.8579095647962216e-17, "p_value": 3.096515941327036e-18, "significant": true, "importance": 0.9852897262573242, "importance_norm": 0.557144484651125, "module": 4, "is_top_importance": true}}, {"data": {"id": "MEMO1", "label": "MEMO1", "category": "enzyme", "localization": "cytoplasm|nucleus", "notes": "Cu-dependent redox; migration/EMT; added from literature", "log2FC": -0.0401423455751273, "adj_p": 0.0872627340507381, "p_value": 0.0759508981552721, "significant": false, "importance": 0.3216813103109598, "importance_norm": 0.18189874823508648, "module": 4, "is_top_importance": false}}, {"data": {"id": "MOXD1", "label": "MOXD1", "category": "enzyme", "localization": "endoplasmic_reticulum", "notes": "Upregulated in breast (cluster 8)", "log2FC": 0.1405081818133936, "adj_p": 0.1491149619177787, "p_value": 0.1325466328158033, "significant": false, "importance": 0.427072149515152, "importance_norm": 0.24149332557673037, "module": 9, "is_top_importance": false}}, {"data": {"id": "MOXD2P", "label": "MOXD2P", "category": "enzyme", "localization": "endoplasmic_reticulum", "notes": "Pseudogene; localisation assumed same as MOXD1", "log2FC": 0.004002945197228, "adj_p": 2.33499743019849e-06, "p_value": 1.167498715099245e-06, "significant": true, "importance": 0.3781212609261274, "importance_norm": 0.21381342912663379, "module": 9, "is_top_importance": false}}, {"data": {"id": "MT-CO1", "label": "MT-CO1", "category": "enzyme", "localization": "mitochondrion", "notes": "CuB site of cytochrome c oxidase", "log2FC": -1.1406972823428188, "adj_p": 2.5814199792373853e-16, "p_value": 5.258448105853932e-17, "significant": true, "importance": 1.0858919841051102, "importance_norm": 0.6140312983564228, "module": 2, "is_top_importance": true}}, {"data": {"id": "MT-CO2", "label": "MT-CO2", "category": "enzyme", "localization": "mitochondrion", "notes": "CuA site of cytochrome c oxidase", "log2FC": -0.9237444417850328, "adj_p": 7.15389527464967e-14, "p_value": 1.9871931318471308e-14, "significant": true, "importance": 0.8267553165555, "importance_norm": 0.46749920607067497, "module": 2, "is_top_importance": true}}, {"data": {"id": "PAM", "label": "PAM", "category": "enzyme", "localization": "cell_membrane|extracellular_space", "notes": "Cu-dependent amidating monooxygenase", "log2FC": -0.0229728163425795, "adj_p": 0.7270857801294096, "p_value": 0.7270857801294095, "significant": false, "importance": 0.2490088527649641, "importance_norm": 0.14080519186401338, "module": 13, "is_top_importance": false}}, {"data": {"id": "PARK7", "label": "PARK7", "category": "enzyme", "localization": "cell_membrane|mitochondrion|nucleus", "notes": "Cu-dependent enzyme; oxidative-stress sensor; Parkinson's disease gene", "log2FC": -0.1650311126298955, "adj_p": 0.0050901278565475, "p_value": 0.0037704650789241, "significant": true, "importance": 0.3121239747107029, "importance_norm": 0.17649443245289562, "module": 5, "is_top_importance": false}}, {"data": {"id": "SOD1", "label": "SOD1", "category": "enzyme", "localization": "cytoplasm|nucleus", "notes": "Cytosolic antioxidant; receives Cu from CCS", "log2FC": -0.8184781069953662, "adj_p": 1.1483964190977628e-18, "p_value": 1.488662024756359e-19, "significant": true, "importance": 1.1413870716094972, "importance_norm": 0.6454116945021813, "module": 5, "is_top_importance": true}}, {"data": {"id": "SOD3", "label": "SOD3", "category": "enzyme", "localization": "extracellular_space", "notes": "Extracellular antioxidant; regulated by ATOX1", "log2FC": -0.1070204311664868, "adj_p": 0.4609140633804136, "p_value": 0.4353077265259462, "significant": false, "importance": 0.421671362966299, "importance_norm": 0.23843938280407875, "module": 5, "is_top_importance": false}}, {"data": {"id": "TYR", "label": "TYR", "category": "enzyme", "localization": "intracellular_vesicles", "notes": "Cu-dependent melanin-synthesis enzyme", "log2FC": 0.0284975140208217, "adj_p": 0.0003935772407786, "p_value": 0.0002259424900766, "significant": true, "importance": 0.2440662333369255, "importance_norm": 0.13801032546007605, "module": 8, "is_top_importance": false}}, {"data": {"id": "TYRP1", "label": "TYRP1", "category": "enzyme", "localization": "intracellular_vesicles", "notes": "Upregulated in breast (cluster 5)", "log2FC": 0.1829233433411121, "adj_p": 3.4773680939163827e-10, "p_value": 1.4167055197437115e-10, "significant": true, "importance": 0.2838092337548732, "importance_norm": 0.1604835055778235, "module": 8, "is_top_importance": false}}, {"data": {"id": "AFP", "label": "AFP", "category": "other_or_unknown", "localization": "extracellular_space", "notes": "Cu-binding liver-secreted protein; downregulated in cluster 3 in breast", "log2FC": 1.7314877042402377, "adj_p": 1.7208746312512088e-17, "p_value": 2.5494438981499387e-18, "significant": true, "importance": 0.1847908731177449, "importance_norm": 0.10449232649821519, "module": 0, "is_top_importance": false}}, {"data": {"id": "ALB", "label": "ALB", "category": "other_or_unknown", "localization": "extracellular_space", "notes": "Principal plasma Cu carrier by mass; low mRNA-protein correlation", "log2FC": -2.382713822497241, "adj_p": 1.2476939347999291e-45, "p_value": 2.3105443237035717e-47, "significant": true, "importance": 0.9710844337940217, "importance_norm": 0.5491119231234122, "module": 3, "is_top_importance": true}}, {"data": {"id": "APP", "label": "APP", "category": "other_or_unknown", "localization": "cell_membrane", "notes": "Amyloidogenic; Cu role unclear", "log2FC": -0.5896984987001641, "adj_p": 3.1123769613450178e-15, "p_value": 7.492759351386154e-16, "significant": true, "importance": 0.3908299341797828, "importance_norm": 0.22099970847352526, "module": 0, "is_top_importance": false}}, {"data": {"id": "CUTA", "label": "CUTA", "category": "other_or_unknown", "localization": "mitochondrion", "notes": "Predicted mitochondrial; upregulated in breast cluster 3; localisation less stringent", "log2FC": 0.590878105709729, "adj_p": 7.518569980327138e-15, "p_value": 1.9492588837885174e-15, "significant": true, "importance": 0.116848221682012, "importance_norm": 0.06607329856032897, "module": 6, "is_top_importance": false}}, {"data": {"id": "F5", "label": "F5", "category": "other_or_unknown", "localization": "extracellular_space", "notes": "Plasma protein reported to bind Cu; upregulated in breast cluster 1", "log2FC": -0.2389554395321838, "adj_p": 0.0043313765168275, "p_value": 0.0031282163732643, "significant": true, "importance": 0.1639881461113691, "importance_norm": 0.09272916251869114, "module": 3, "is_top_importance": false}}, {"data": {"id": "GPC1", "label": "GPC1", "category": "other_or_unknown", "localization": "cell_membrane|extracellular_space", "notes": "Heparan sulfate proteoglycan; Cu-binding", "log2FC": -0.600986257610908, "adj_p": 2.1621454565313318e-10, "p_value": 8.408343442066291e-11, "significant": true, "importance": 0.1498355304449796, "importance_norm": 0.08472638774921515, "module": 1, "is_top_importance": false}}, {"data": {"id": "LTF", "label": "LTF", "category": "other_or_unknown", "localization": "nucleus|extracellular_space", "notes": "Cu/Fe-binding transferrin family", "log2FC": 0.1324421585701388, "adj_p": 0.0764049271236364, "p_value": 0.0650856786608755, "significant": false, "importance": 0.3341155044734478, "importance_norm": 0.18892981992303193, "module": 3, "is_top_importance": false}}, {"data": {"id": "MT3", "label": "MT3", "category": "other_or_unknown", "localization": "cytoplasm|extracellular_space", "notes": "Metallothionein; Cu/Zn binder", "log2FC": 0.3592387667935418, "adj_p": 1.1807167431739306e-13, "p_value": 3.498419979774609e-14, "significant": true, "importance": 0.3075297443568706, "importance_norm": 0.17389656703865097, "module": 10, "is_top_importance": false}}, {"data": {"id": "MT4", "label": "MT4", "category": "other_or_unknown", "localization": "extracellular_space", "notes": "Metallothionein; Cu/Zn binder", "log2FC": 0.040448895699137, "adj_p": 0.0019725372226712, "p_value": 0.0013515532822006, "significant": true, "importance": 0.2951378555595875, "importance_norm": 0.166889417452263, "module": 10, "is_top_importance": false}}, {"data": {"id": "PRNP", "label": "PRNP", "category": "other_or_unknown", "localization": "cell_membrane|mitochondrion|cytoplasm|nucleus|golgi_apparatus", "notes": "Amyloidogenic; Cu role unclear; frequently downregulated", "log2FC": -1.1893630808167384, "adj_p": 3.595242256140076e-31, "p_value": 2.663142411955612e-32, "significant": true, "importance": 0.2792329888045788, "importance_norm": 0.15789581023652122, "module": 0, "is_top_importance": false}}, {"data": {"id": "S100A5", "label": "S100A5", "category": "other_or_unknown", "localization": "nucleus", "notes": "EF-hand; Cu-binding S100 family", "log2FC": 0.0270438381689173, "adj_p": 0.070210945182967, "p_value": 0.0585091209858058, "significant": false, "importance": 0.275836110189557, "importance_norm": 0.15597500244267795, "module": 4, "is_top_importance": false}}, {"data": {"id": "S100A12", "label": "S100A12", "category": "other_or_unknown", "localization": "cell_membrane|cytoskeleton|cytoplasm|extracellular_space", "notes": "EF-hand; Cu-binding S100 family", "log2FC": -1.3712164495896568, "adj_p": 1.2104518375041165e-12, "p_value": 4.2589972060330025e-13, "significant": true, "importance": 0.4363556365668773, "importance_norm": 0.2467427902482498, "module": 4, "is_top_importance": false}}, {"data": {"id": "S100A13", "label": "S100A13", "category": "other_or_unknown", "localization": "cytoplasm|extracellular_space", "notes": "EF-hand; Cu-binding S100 family", "log2FC": 0.3469782205292588, "adj_p": 0.0061672208283599, "p_value": 0.0046825195178288, "significant": true, "importance": 0.3177613358944654, "importance_norm": 0.1796821493323258, "module": 4, "is_top_importance": false}}, {"data": {"id": "S100B", "label": "S100B", "category": "other_or_unknown", "localization": "nucleus|extracellular_space", "notes": "EF-hand; frequently downregulated in cancers", "log2FC": -0.0382048800232996, "adj_p": 0.6049759847832461, "p_value": 0.582569466828311, "significant": false, "importance": 0.2448764222115278, "importance_norm": 0.13846845696290316, "module": 4, "is_top_importance": false}}, {"data": {"id": "SNCA", "label": "SNCA", "category": "other_or_unknown", "localization": "cell_membrane|cytoplasm|nucleus|extracellular_space", "notes": "Amyloidogenic; Cu role unclear; frequently downregulated", "log2FC": -0.0519030525353957, "adj_p": 0.0093079530812628, "p_value": 0.0072395190632044, "significant": true, "importance": 0.3241651034355163, "importance_norm": 0.18330324033876202, "module": 0, "is_top_importance": false}}, {"data": {"id": "SPARC", "label": "SPARC", "category": "other_or_unknown", "localization": "extracellular_space", "notes": "Collagen-binding glycoprotein; invasion/metastasis; added from literature", "log2FC": 0.7505909108375732, "adj_p": 1.314652170661643e-13, "p_value": 4.138719796527393e-14, "significant": true, "importance": 0.4960896497964859, "importance_norm": 0.28052014033122635, "module": 1, "is_top_importance": false}}], "edges": [{"data": {"id": "SLC31A1__ATOX1", "source": "SLC31A1", "target": "ATOX1", "weight": 1.0, "edge_type": "physical", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "SLC31A1__CCS", "source": "SLC31A1", "target": "CCS", "weight": 1.0, "edge_type": "physical", "attention": 41.885602951049805, "is_bio_canonical": true, "is_top_attention": true}}, {"data": {"id": "SLC31A2__ATOX1", "source": "SLC31A2", "target": "ATOX1", "weight": 1.0, "edge_type": "physical", "attention": 27.01214948296547, "is_bio_canonical": false, "is_top_attention": true}}, {"data": {"id": "ATP7A__ATOX1", "source": "ATP7A", "target": "ATOX1", "weight": 1.0, "edge_type": "physical", "attention": 0.0, "is_bio_canonical": true, "is_top_attention": false}}, {"data": {"id": "ATP7A__ATP7B", "source": "ATP7A", "target": "ATP7B", "weight": 1.0, "edge_type": "physical", "attention": 27.55530206859112, "is_bio_canonical": true, "is_top_attention": true}}, {"data": {"id": "ATP7A__PRNP", "source": "ATP7A", "target": "PRNP", "weight": 0.5, "edge_type": "shared_compartment", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "ATP7B__ATOX1", "source": "ATP7B", "target": "ATOX1", "weight": 1.0, "edge_type": "physical", "attention": 0.0, "is_bio_canonical": true, "is_top_attention": false}}, {"data": {"id": "ATP7B__COMMD1", "source": "ATP7B", "target": "COMMD1", "weight": 1.0, "edge_type": "physical", "attention": 28.60868403315544, "is_bio_canonical": true, "is_top_attention": true}}, {"data": {"id": "ATP7B__CP", "source": "ATP7B", "target": "CP", "weight": 1.0, "edge_type": "physical", "attention": 24.74118143320084, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "ATP7B__AFP", "source": "ATP7B", "target": "AFP", "weight": 1.0, "edge_type": "coexpression", "attention": 39.31168552150484, "is_bio_canonical": false, "is_top_attention": true}}, {"data": {"id": "ATP7B__PRNP", "source": "ATP7B", "target": "PRNP", "weight": 0.5, "edge_type": "shared_compartment", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "ATOX1__SOD3", "source": "ATOX1", "target": "SOD3", "weight": 1.0, "edge_type": "genetic", "attention": 34.49104370176792, "is_bio_canonical": true, "is_top_attention": true}}, {"data": {"id": "CCS__SOD1", "source": "CCS", "target": "SOD1", "weight": 1.0, "edge_type": "physical", "attention": 29.11472907662392, "is_bio_canonical": true, "is_top_attention": true}}, {"data": {"id": "COX11__COX17", "source": "COX11", "target": "COX17", "weight": 1.0, "edge_type": "physical", "attention": 0.0, "is_bio_canonical": true, "is_top_attention": false}}, {"data": {"id": "COX11__MT-CO1", "source": "COX11", "target": "MT-CO1", "weight": 1.0, "edge_type": "physical", "attention": 22.941643732166995, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "COX17__SCO1", "source": "COX17", "target": "SCO1", "weight": 1.0, "edge_type": "physical", "attention": 0.0, "is_bio_canonical": true, "is_top_attention": false}}, {"data": {"id": "COX17__SCO2", "source": "COX17", "target": "SCO2", "weight": 1.0, "edge_type": "physical", "attention": 0.0, "is_bio_canonical": true, "is_top_attention": false}}, {"data": {"id": "SCO1__MT-CO1", "source": "SCO1", "target": "MT-CO1", "weight": 1.0, "edge_type": "physical", "attention": 24.834785774350166, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "SCO2__MT-CO2", "source": "SCO2", "target": "MT-CO2", "weight": 1.0, "edge_type": "physical", "attention": 31.18667107820511, "is_bio_canonical": true, "is_top_attention": true}}, {"data": {"id": "COMMD1__CUTA", "source": "COMMD1", "target": "CUTA", "weight": 1.0, "edge_type": "physical", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "CUTC__CUTA", "source": "CUTC", "target": "CUTA", "weight": 1.0, "edge_type": "coexpression", "attention": 21.541729149932507, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "AOC1__AOC2", "source": "AOC1", "target": "AOC2", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "AOC1__AOC3", "source": "AOC1", "target": "AOC3", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "AOC2__AOC3", "source": "AOC2", "target": "AOC3", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "CP__HEPH", "source": "CP", "target": "HEPH", "weight": 1.0, "edge_type": "physical", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "CP__HEPHL1", "source": "CP", "target": "HEPHL1", "weight": 1.0, "edge_type": "physical", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "CP__LTF", "source": "CP", "target": "LTF", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "CP__ALB", "source": "CP", "target": "ALB", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "DBH__TYR", "source": "DBH", "target": "TYR", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "DBH__TYRP1", "source": "DBH", "target": "TYRP1", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "LOX__LOXL1", "source": "LOX", "target": "LOXL1", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "LOX__LOXL2", "source": "LOX", "target": "LOXL2", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "LOX__LOXL3", "source": "LOX", "target": "LOXL3", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "LOX__LOXL4", "source": "LOX", "target": "LOXL4", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "LOX__SPARC", "source": "LOX", "target": "SPARC", "weight": 1.0, "edge_type": "physical", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "LOXL1__LOXL2", "source": "LOXL1", "target": "LOXL2", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "LOXL1__SPARC", "source": "LOXL1", "target": "SPARC", "weight": 1.0, "edge_type": "physical", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "LOXL2__LOXL3", "source": "LOXL2", "target": "LOXL3", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "LOXL3__LOXL4", "source": "LOXL3", "target": "LOXL4", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "MAP2K1__MEMO1", "source": "MAP2K1", "target": "MEMO1", "weight": 1.0, "edge_type": "genetic", "attention": 20.58959677270468, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "MAP2K1__S100A12", "source": "MAP2K1", "target": "S100A12", "weight": 0.5, "edge_type": "shared_compartment", "attention": 23.4859778797254, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "MEMO1__SPARC", "source": "MEMO1", "target": "SPARC", "weight": 1.0, "edge_type": "genetic", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "MOXD1__MOXD2P", "source": "MOXD1", "target": "MOXD2P", "weight": 1.0, "edge_type": "coexpression", "attention": 27.270298451185223, "is_bio_canonical": false, "is_top_attention": true}}, {"data": {"id": "MT-CO1__MT-CO2", "source": "MT-CO1", "target": "MT-CO2", "weight": 1.0, "edge_type": "physical", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "PARK7__SOD1", "source": "PARK7", "target": "SOD1", "weight": 1.0, "edge_type": "genetic", "attention": 33.99873501062393, "is_bio_canonical": false, "is_top_attention": true}}, {"data": {"id": "SOD1__SOD3", "source": "SOD1", "target": "SOD3", "weight": 1.0, "edge_type": "coexpression", "attention": 24.51686242222786, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "TYR__TYRP1", "source": "TYR", "target": "TYRP1", "weight": 1.0, "edge_type": "physical", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "ALB__LTF", "source": "ALB", "target": "LTF", "weight": 1.0, "edge_type": "coexpression", "attention": 21.086718964375905, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "ALB__F5", "source": "ALB", "target": "F5", "weight": 1.0, "edge_type": "coexpression", "attention": 20.31735762488097, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "APP__PRNP", "source": "APP", "target": "PRNP", "weight": 1.0, "edge_type": "physical", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "APP__SNCA", "source": "APP", "target": "SNCA", "weight": 1.0, "edge_type": "physical", "attention": 22.22692562182965, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "GPC1__SPARC", "source": "GPC1", "target": "SPARC", "weight": 1.0, "edge_type": "physical", "attention": 25.72408022382297, "is_bio_canonical": false, "is_top_attention": true}}, {"data": {"id": "MT3__MT4", "source": "MT3", "target": "MT4", "weight": 1.0, "edge_type": "coexpression", "attention": 25.66707575321197, "is_bio_canonical": false, "is_top_attention": true}}, {"data": {"id": "PRNP__SNCA", "source": "PRNP", "target": "SNCA", "weight": 1.0, "edge_type": "physical", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "S100A5__S100A12", "source": "S100A5", "target": "S100A12", "weight": 1.0, "edge_type": "coexpression", "attention": 33.950986713171005, "is_bio_canonical": false, "is_top_attention": true}}, {"data": {"id": "S100A5__S100A13", "source": "S100A5", "target": "S100A13", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "S100A5__S100B", "source": "S100A5", "target": "S100B", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}, {"data": {"id": "S100A12__S100A13", "source": "S100A12", "target": "S100A13", "weight": 1.0, "edge_type": "coexpression", "attention": 33.95098713040352, "is_bio_canonical": false, "is_top_attention": true}}, {"data": {"id": "S100A12__S100B", "source": "S100A12", "target": "S100B", "weight": 1.0, "edge_type": "coexpression", "attention": 33.95098689198494, "is_bio_canonical": false, "is_top_attention": true}}, {"data": {"id": "S100A13__S100B", "source": "S100A13", "target": "S100B", "weight": 1.0, "edge_type": "coexpression", "attention": 0.0, "is_bio_canonical": false, "is_top_attention": false}}]};
+const META = {"attn_max": 41.885602951049805, "imp_max": 1.7684635734558103, "n_top_importance": 10, "n_top_attention": 15};
+
+const EDGE_COLOR = {
+  physical: "#d32f2f",
+  coexpression: "#7b1fa2",
+  genetic: "#2e7d32",
+  shared_compartment: "#9e9e9e",
+  attention_only: "#1565c0",
+};
+const NODE_SHAPE = {
+  transporter: "ellipse",
+  enzyme: "round-rectangle",
+  other_or_unknown: "triangle",
+};
+
+const FC_MIN = -3, FC_MAX = 3;
+function lerp(a, b, t) { return a + (b - a) * t; }
+function lerpColor(rgbA, rgbB, t) {
+  return [Math.round(lerp(rgbA[0], rgbB[0], t)),
+          Math.round(lerp(rgbA[1], rgbB[1], t)),
+          Math.round(lerp(rgbA[2], rgbB[2], t))];
+}
+function logfcColor(fc) {
+  const blue = [31, 78, 121], white = [245, 245, 245], red = [178, 34, 34];
+  const clipped = Math.max(FC_MIN, Math.min(FC_MAX, fc));
+  if (clipped >= 0) {
+    const t = clipped / FC_MAX;
+    const [r,g,b] = lerpColor(white, red, t);
+    return `rgb(${r},${g},${b})`;
+  } else {
+    const t = -clipped / (-FC_MIN);
+    const [r,g,b] = lerpColor(white, blue, t);
+    return `rgb(${r},${g},${b})`;
+  }
+}
+function nodeSize(imp_norm) { return 18 + 42 * imp_norm; }
+function edgeWidth(attn, has_attn) {
+  if (!has_attn || attn <= 0) return 1.5;
+  return 1.5 + 7.0 * (attn / META.attn_max);
+}
+
+const elements = [];
+DATA.nodes.forEach(n => {
+  const d = n.data;
+  d.color = logfcColor(d.log2FC);
+  d.size = nodeSize(d.importance_norm);
+  d.shape = NODE_SHAPE[d.category] || "ellipse";
+  d.border_color = d.is_top_importance ? "#111" : "#777";
+  d.border_width = d.is_top_importance ? 3 : 1;
+  elements.push(n);
+});
+DATA.edges.forEach(e => {
+  const d = e.data;
+  d.color = EDGE_COLOR[d.edge_type] || "#aaa";
+  d.line_style = d.edge_type === "attention_only" ? "dashed" : "solid";
+  d.width = edgeWidth(d.attention, d.attention > 0);
+  d.glow = d.is_bio_canonical ? "#ff1744" : "transparent";
+  elements.push(e);
+});
+
+const cy = cytoscape({
+  container: document.getElementById("cy"),
+  elements: elements,
+  layout: {
+    name: "fcose",
+    animate: false,
+    quality: "proof",
+    idealEdgeLength: 90,
+    nodeSeparation: 85,
+    nodeRepulsion: 6500,
+    gravity: 0.25,
+    padding: 40,
+  },
+  style: [
+    { selector: "node",
+      style: {
+        "background-color": "data(color)",
+        "label": "data(label)",
+        "text-valign": "center",
+        "text-halign": "center",
+        "font-size": 10,
+        "font-weight": 500,
+        "color": "#111",
+        "text-outline-color": "#fff",
+        "text-outline-width": 1.5,
+        "width": "data(size)",
+        "height": "data(size)",
+        "shape": "data(shape)",
+        "border-color": "data(border_color)",
+        "border-width": "data(border_width)",
+      }
+    },
+    { selector: "edge",
+      style: {
+        "width": "data(width)",
+        "line-color": "data(color)",
+        "line-style": "data(line_style)",
+        "curve-style": "bezier",
+        "opacity": 0.7,
+      }
+    },
+    { selector: "edge[?is_bio_canonical]",
+      style: { "line-color": "#c62828", "opacity": 0.95, "width": "data(width)" }
+    },
+    { selector: "edge[?is_top_attention]",
+      style: { "target-arrow-color": "#333" }
+    },
+    { selector: ".faded",
+      style: { "opacity": 0.12 }
+    },
+    { selector: ".selected-edge",
+      style: { "line-color": "#000", "opacity": 1.0 }
+    },
+    { selector: "node.selected-node",
+      style: { "border-color": "#000", "border-width": 4 }
+    },
+  ],
+  wheelSensitivity: 0.25,
+  minZoom: 0.3,
+  maxZoom: 4.0,
+});
+
+// Stats
+const sig = DATA.nodes.filter(n => n.data.significant).length;
+document.getElementById("stats").innerHTML =
+  `nodes: ${DATA.nodes.length} (${sig} sig. BH<0.05)<br>` +
+  `edges: ${DATA.edges.length}<br>` +
+  `top-10 important: <b>${META.n_top_importance}</b><br>` +
+  `top attention edges: ${META.n_top_attention}`;
+
+// Tooltip
+const tip = document.getElementById("tooltip");
+let tipPinned = false;
+
+function fmt(x, d = 3) {
+  if (x === null || x === undefined || Number.isNaN(x)) return "-";
+  if (typeof x !== "number") return x;
+  if (Math.abs(x) < 1e-3 && x !== 0) return x.toExponential(2);
+  return x.toFixed(d);
+}
+
+function nodeTip(n) {
+  const d = n.data();
+  const fcClass = d.log2FC > 0 ? "up" : (d.log2FC < 0 ? "down" : "");
+  const sigBadge = d.significant ? "<span style='color:#69f0ae'>✓ sig</span>" : "<span style='color:#bbb'>ns</span>";
+  return `
+    <div class="tip-title">${d.label}   ${sigBadge}</div>
+    <div class="tip-row"><span class="tip-label">log2FC</span><span class="tip-value ${fcClass}">${fmt(d.log2FC)}</span></div>
+    <div class="tip-row"><span class="tip-label">adj p (BH)</span><span class="tip-value">${fmt(d.adj_p, 3)}</span></div>
+    <div class="tip-row"><span class="tip-label">GNN importance</span><span class="tip-value">${fmt(d.importance)}</span></div>
+    <div class="tip-row"><span class="tip-label">category</span><span class="tip-value">${d.category}</span></div>
+    <div class="tip-row"><span class="tip-label">module</span><span class="tip-value">#${d.module}</span></div>
+    <div class="tip-row"><span class="tip-label">localization</span><span class="tip-value" style="text-align:right;max-width:180px">${(d.localization || '').replaceAll('|',', ')}</span></div>
+    <div style="margin-top:6px;color:#ccc;font-size:11px;font-style:italic;max-width:300px">${d.notes || ''}</div>`;
+}
+
+function edgeTip(e) {
+  const d = e.data();
+  let label = d.edge_type.replaceAll("_", " ");
+  const badge = d.is_bio_canonical ? " <span style='color:#ff6e6e'>★ canonical Cu biology</span>" : "";
+  return `
+    <div class="tip-title">${d.source} — ${d.target}${badge}</div>
+    <div class="tip-row"><span class="tip-label">type</span><span class="tip-value">${label}</span></div>
+    <div class="tip-row"><span class="tip-label">GAT attention</span><span class="tip-value">${fmt(d.attention)}</span></div>
+    <div class="tip-row"><span class="tip-label">prior weight</span><span class="tip-value">${fmt(d.weight)}</span></div>
+    <div class="tip-row"><span class="tip-label">top attention?</span><span class="tip-value">${d.is_top_attention ? "yes" : "no"}</span></div>`;
+}
+
+function showTipAt(content, x, y) {
+  tip.innerHTML = content;
+  tip.style.left = (x + 14) + "px";
+  tip.style.top = (y + 14) + "px";
+  tip.style.display = "block";
+}
+function hideTip() { if (!tipPinned) tip.style.display = "none"; }
+
+cy.on("mouseover", "node", evt => { if (!tipPinned) showTipAt(nodeTip(evt.target), evt.originalEvent.clientX, evt.originalEvent.clientY); });
+cy.on("mouseover", "edge", evt => { if (!tipPinned) showTipAt(edgeTip(evt.target), evt.originalEvent.clientX, evt.originalEvent.clientY); });
+cy.on("mousemove", "node, edge", evt => { if (!tipPinned) { tip.style.left = (evt.originalEvent.clientX + 14) + "px"; tip.style.top = (evt.originalEvent.clientY + 14) + "px"; }});
+cy.on("mouseout", "node, edge", () => hideTip());
+
+cy.on("tap", "node", evt => {
+  tipPinned = true;
+  cy.elements().removeClass("selected-node selected-edge faded");
+  const n = evt.target;
+  const hood = n.closedNeighborhood();
+  cy.elements().not(hood).addClass("faded");
+  n.addClass("selected-node");
+  n.connectedEdges().addClass("selected-edge");
+  showTipAt(nodeTip(n), evt.originalEvent.clientX, evt.originalEvent.clientY);
+});
+cy.on("tap", "edge", evt => {
+  tipPinned = true;
+  cy.elements().removeClass("selected-node selected-edge faded");
+  const e = evt.target;
+  cy.elements().not(e.connectedNodes().union(e)).addClass("faded");
+  e.addClass("selected-edge");
+  showTipAt(edgeTip(e), evt.originalEvent.clientX, evt.originalEvent.clientY);
+});
+cy.on("tap", evt => {
+  if (evt.target === cy) { tipPinned = false; hideTip(); cy.elements().removeClass("selected-node selected-edge faded"); }
+});
+
+// Search
+document.getElementById("search").addEventListener("input", evt => {
+  const q = evt.target.value.trim().toUpperCase();
+  cy.elements().removeClass("faded");
+  if (!q) return;
+  cy.nodes().forEach(n => {
+    if (!n.data("label").toUpperCase().includes(q)) n.addClass("faded");
+  });
+});
+document.getElementById("fit").addEventListener("click", () => cy.fit(undefined, 40));
+document.getElementById("reset").addEventListener("click", () => {
+  tipPinned = false; hideTip();
+  cy.elements().removeClass("selected-node selected-edge faded");
+  document.getElementById("search").value = "";
+});
+
+function applyEdgeVisibility() {
+  const types = ["physical", "coexpression", "genetic", "shared_compartment", "attention_only"];
+  types.forEach(t => {
+    const on = document.getElementById("show_" + t).checked;
+    cy.edges().forEach(e => {
+      if (e.data("edge_type") === t) e.style("display", on ? "element" : "none");
+    });
+  });
+}
+["physical", "coexpression", "genetic", "shared_compartment", "attention_only"].forEach(t => {
+  document.getElementById("show_" + t).addEventListener("change", applyEdgeVisibility);
+});
+
+document.getElementById("hl_top_nodes").addEventListener("change", evt => {
+  cy.nodes().forEach(n => {
+    if (n.data("is_top_importance")) {
+      n.style("border-width", evt.target.checked ? 3 : 1);
+      n.style("border-color", evt.target.checked ? "#111" : "#777");
+    }
+  });
+});
+document.getElementById("hl_top_edges").addEventListener("change", evt => {
+  cy.edges().forEach(e => {
+    if (e.data("is_top_attention")) {
+      e.style("opacity", evt.target.checked ? 1.0 : 0.5);
+      e.style("width", evt.target.checked ? Math.max(3, e.data("width")) : e.data("width"));
+    }
+  });
+});
+document.getElementById("hl_bio").addEventListener("change", evt => {
+  cy.edges().forEach(e => {
+    if (e.data("is_bio_canonical")) {
+      e.style("line-color", evt.target.checked ? "#c62828" : e.data("color"));
+      e.style("width", evt.target.checked ? Math.max(4, e.data("width")) : e.data("width"));
+    }
+  });
+});
+
+cy.ready(() => cy.fit(undefined, 50));
+</script>
+</body>
+</html>

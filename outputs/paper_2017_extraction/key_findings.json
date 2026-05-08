@@ -1,0 +1,87 @@
+{
+  "citation": "Blockhuys S. et al., Metallomics, 2017, 9, 112-123. DOI: 10.1039/C6MT00202A.",
+  "paper_question": "What is the human copper proteome, and how is it dysregulated at the transcript level across TCGA cancer types?",
+  "num_copper_genes": 54,
+  "gene_category_counts": {
+    "transporter": 12,
+    "enzyme": 26,
+    "other_or_unknown": 16,
+    "note": "The paper text quotes 12 / ~27 / 15. Our reconstruction from Fig. 1 colors and text yields 12 / 26 / 16. The discrepancy reflects edge cases (CUTC, CUTA, SCO1/2) that the paper itself flags as ambiguous."
+  },
+  "data_sources": [
+    "UniProt.org (search term 'human + copper') with manual curation",
+    "Literature additions: SPARC, MEMO1, MAP2K1",
+    "Genecards.org (subcellular localization via UniProtKB + COMPARTMENTS confidence 4-5)",
+    "TCGA / GDC data portal (upper-quartile normalized FPKM RNA-seq, accessed 22 Aug 2016)",
+    "Mertins et al. 2016 (Nature) proteogenomic breast cancer data for Fig. 4"
+  ],
+  "cancer_types_analyzed": [
+    "thymus", "head_and_neck", "esophagus", "adrenal_gland", "bladder",
+    "stomach", "soft_tissue", "kidney", "pancreas", "bile_duct",
+    "liver", "prostate", "cervix", "breast", "uterus",
+    "thyroid", "colorectal", "lung"
+  ],
+  "num_cancer_types_with_full_coverage": 18,
+  "cancer_groups_from_clustering": {
+    "group_1": ["thymus", "head_and_neck", "esophagus", "adrenal_gland", "bladder", "stomach"],
+    "group_2": ["soft_tissue", "kidney", "pancreas", "bile_duct", "liver"],
+    "group_3": ["prostate", "cervix", "breast", "uterus", "thyroid", "colorectal", "lung"]
+  },
+  "gene_clusters_from_fig2": {
+    "cluster_1": "AOC1 ... DBH",
+    "cluster_2": "MT4 ... GPC1",
+    "cluster_3": "CUTA ... AFP",
+    "cluster_4": "CP ... ALB",
+    "cluster_5": "S100A5 ... S100A13",
+    "cluster_6": "ENOX2 ... SNCA",
+    "cluster_7": "LOX ... TYR",
+    "cluster_8": "LOXL1 ... AOC3"
+  },
+  "clusters_with_highest_internal_connectivity": ["cluster_1", "cluster_3", "cluster_8"],
+  "clusters_with_lowest_internal_connectivity": ["cluster_2", "cluster_4"],
+  "frequently_upregulated_across_cancers": ["LOX", "LOXL1", "LOXL2", "SPARC", "ENOX2"],
+  "frequently_downregulated_across_cancers": ["S100B", "PRNP", "ENOX1", "SNCA", "SOD3", "HEPHL1", "AOC3"],
+  "main_breast_cancer_findings": {
+    "upregulated_transporters": ["SLC31A1", "ATOX1", "ATP7B", "COX17", "SCO2"],
+    "upregulated_enzymes": ["HEPHL1", "TYRP1", "LOXL1", "LOXL2", "MOXD1"],
+    "other_upregulated": ["F5", "CUTA", "TYRP1", "MT3"],
+    "downregulated": ["CUTC", "AFP", "S100B", "PRNP", "SNCA", "AOC2", "LOXL4", "PAM", "SOD3", "AOC3"],
+    "interpretation": "Pattern consistent with increased Cu uptake via SLC31A1 and secretory-path delivery via ATOX1 to ATP7B, plus enhanced mitochondrial Cu delivery via COX17 / SCO2."
+  },
+  "network_analysis_summary": {
+    "tool": "Cytoscape + GeneMANIA App",
+    "edge_types": ["physical_interactions", "co_expression", "genetic_interactions"],
+    "edge_colors": {"red": "physical", "purple": "co_expression", "green": "genetic"},
+    "node_colors": {"red": "upregulated_in_breast_cancer", "blue": "downregulated_in_breast_cancer", "black": "no_change_in_breast_cancer", "grey": "first_level_partner"},
+    "take_home": "The Cu proteome shows high inter-cluster connectivity: many Cu-binding proteins that separate into different heatmap clusters still appear as first-level partners in each other's subnetworks. This motivates a single integrated multi-edge graph for GNN input."
+  },
+  "atox1_summary": {
+    "role": "Cytoplasmic Cu chaperone that delivers Cu to ATP7A/B; reported transcription-factor-like activity promoting cyclin D1 and SOD3 expression.",
+    "observation_in_paper": "ATOX1 mRNA upregulated in breast, colorectal, uterus and liver tumors (Fig. S1). Protein validated in 67 breast-cancer TMA cores: largely absent in 4 normal cores, present (weak/moderate) in most cancer cores, strongest and most frequent in luminal B.",
+    "subcellular_distribution_in_tissue": "Cytoplasmic plus increased nuclear signal in samples with the highest overall ATOX1 levels, consistent with its proposed transcription-factor role."
+  },
+  "limitations": [
+    "RNA does not always reflect protein - only 28/36 Cu-binders had high/moderate mRNA-protein correlation in Fig. 4.",
+    "Only 18/25 TCGA cancers had expression data for all 54 genes.",
+    "Imbalanced tumor vs. normal sample sizes in TCGA.",
+    "IHC cohort small (67 + 4) and unmatched, no significant subtype differences.",
+    "The 54-gene list is a lower bound - will grow as more Cu-binders are characterized.",
+    "Some gene assignments are inherently ambiguous (SCO1/2 as transporter vs enzyme; CUTC as transporter vs enzyme; CUTA compartment)."
+  ],
+  "potential_relevance_to_lihc": {
+    "liver_position_in_cluster_tree": "group_2 (closest to soft_tissue, kidney, pancreas, bile_duct)",
+    "atox1_direction_in_liver_per_paper_s1": "downregulated in liver and bile duct tumors (opposite to breast).",
+    "lihc_specific_copper_biology": [
+      "ATP7B (Wilson's disease) is hepatocyte-specific; Cu export and ceruloplasmin loading happen in the liver.",
+      "CP (ceruloplasmin) is liver-secreted; central to plasma Cu distribution.",
+      "LOX-family ECM remodelling is relevant to liver fibrosis -> HCC transition.",
+      "AFP is a canonical HCC biomarker and is in the 54-gene list (cluster 3, downregulated in breast cluster 3)."
+    ],
+    "implication_for_our_project": "The copper proteome is biologically privileged in liver cancer: we expect that a 54-node graph with LIHC tumor-vs-normal features should carry real signal, especially from ATP7B, CP, ATOX1, AFP and the LOX family."
+  },
+  "extraction_confidence": {
+    "gene_list": "medium-high - reconstructed from Fig 1 + text; paper lacks a machine-readable 54-gene table in the main text but Table S1 in ESI confirms it.",
+    "categories": "medium - text and Fig 1 colors agree on most, differ on SCO1/2 and CUTC which are transitional cases flagged by the paper.",
+    "localizations": "medium - taken verbatim from Fig 1 compartment assignments; some proteins are in multiple compartments."
+  }
+}

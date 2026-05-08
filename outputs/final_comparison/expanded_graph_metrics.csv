@@ -1,0 +1,4 @@
+task,n_nodes,roc_auc,balanced_accuracy,setting
+tumor_vs_normal,153,0.9888,0.9113,expanded_graph
+stage_early_vs_late,153,0.6839,0.6227,expanded_graph
+survival_3yr,153,0.6947,0.6209,expanded_graph

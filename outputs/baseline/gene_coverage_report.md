@@ -1,0 +1,64 @@
+# Gene Coverage Report — Cu Proteome vs TCGA-LIHC
+
+- Copper proteome size (Blockhuys 2017): **54**
+- Genes found in LIHC expression matrix: **54** (100.0%)
+- Genes missing: **0**
+
+## Missing genes
+- _none_
+
+## Present genes
+- SLC31A1
+- SLC31A2
+- ATP7A
+- ATP7B
+- ATOX1
+- CCS
+- COX11
+- COX17
+- SCO1
+- SCO2
+- COMMD1
+- CUTC
+- AOC1
+- AOC2
+- AOC3
+- CP
+- DBH
+- ENOX1
+- ENOX2
+- HEPH
+- HEPHL1
+- LOX
+- LOXL1
+- LOXL2
+- LOXL3
+- LOXL4
+- MAP2K1
+- MEMO1
+- MOXD1
+- MOXD2P
+- MT-CO1
+- MT-CO2
+- PAM
+- PARK7
+- SOD1
+- SOD3
+- TYR
+- TYRP1
+- AFP
+- ALB
+- APP
+- CUTA
+- F5
+- GPC1
+- LTF
+- MT3
+- MT4
+- PRNP
+- S100A5
+- S100A12
+- S100A13
+- S100B
+- SNCA
+- SPARC

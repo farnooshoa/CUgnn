@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude / project agents
+.claude/
+.codex
+
+# Large raw datasets (re-downloadable; see data/README_data.md)
+data/gdc_raw/
+data/xena_lihc_methylation.gz
+data/illumina_450k_manifest.csv
+data/xena_450k_probemap.tsv
+data/geo_cache/
+
+# Generated handoff archives
+handoff_*.zip
+outputs/cu_followup_package.zip
+
+# Local environment / secrets
+.env
+.env.*
+*.local

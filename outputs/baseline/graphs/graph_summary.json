@@ -1,0 +1,74 @@
+{
+  "ppi_graph": {
+    "n_nodes": 54,
+    "n_edges": 26,
+    "density": 0.01816911250873515,
+    "isolated_nodes": [
+      "CUTC",
+      "AOC1",
+      "AOC2",
+      "AOC3",
+      "DBH",
+      "ENOX1",
+      "ENOX2",
+      "LOXL2",
+      "LOXL3",
+      "LOXL4",
+      "MAP2K1",
+      "MEMO1",
+      "MOXD1",
+      "MOXD2P",
+      "PAM",
+      "PARK7",
+      "SOD3",
+      "AFP",
+      "ALB",
+      "F5",
+      "LTF",
+      "MT3",
+      "MT4",
+      "S100A5",
+      "S100A12",
+      "S100A13",
+      "S100B"
+    ],
+    "n_isolates": 27,
+    "n_connected_components": 32
+  },
+  "functional_graph": {
+    "n_nodes": 54,
+    "n_edges": 60,
+    "density": 0.041928721174004195,
+    "isolated_nodes": [
+      "ENOX1",
+      "ENOX2",
+      "PAM"
+    ],
+    "n_isolates": 3,
+    "n_connected_components": 10
+  },
+  "coexpression_graph": {
+    "n_nodes": 54,
+    "n_edges": 98,
+    "density": 0.06848357791754019,
+    "isolated_nodes": [
+      "SLC31A2",
+      "COX11",
+      "SCO1",
+      "SCO2",
+      "AOC1",
+      "AOC2",
+      "ENOX1",
+      "HEPHL1",
+      "MEMO1",
+      "MOXD2P",
+      "AFP",
+      "LTF",
+      "MT3",
+      "MT4",
+      "PRNP"
+    ],
+    "n_isolates": 15,
+    "n_connected_components": 16
+  }
+}

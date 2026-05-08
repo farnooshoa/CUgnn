@@ -1,0 +1,7 @@
+topology,n_edges,roc_auc_mean,roc_auc_std,balanced_accuracy_mean,f1_mean,accuracy_mean
+real_functional,60,0.9914,0.0065,0.9176,0.9543,0.9222
+empty,0,0.9322,0.0368,0.8007,0.7748,0.6844
+complete,1431,0.9789,0.0149,0.6254,0.944,0.8963
+random_er_seed17,60,0.9948,0.0073,0.9388,0.9293,0.8914
+random_er_seed29,60,0.9811,0.0102,0.9051,0.8935,0.8326
+random_er_seed83,60,0.98,0.0158,0.9173,0.9085,0.8536

@@ -1,0 +1,16 @@
+{
+  "gcn": {
+    "mean_roc_auc": 0.9842270270270269,
+    "mean_balanced_accuracy": 0.8992432432432433,
+    "mean_f1": 0.9133482841714503,
+    "mean_accuracy": 0.868095238095238,
+    "n_folds": 5
+  },
+  "gat": {
+    "mean_roc_auc": 0.9949225225225227,
+    "mean_balanced_accuracy": 0.9452072072072072,
+    "mean_f1": 0.9607113144275973,
+    "mean_accuracy": 0.933921568627451,
+    "n_folds": 5
+  }
+}

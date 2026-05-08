@@ -1,0 +1,425 @@
+sample_id	sample_type	case_submitter_id	stage	grade	overall_survival_days	vital_status	gender	race	age_at_index
+TCGA-DD-AACI-01A	Tumor	TCGA-DD-AACI	Stage II	G3	1618.0	Alive	male	asian	69.0
+TCGA-UB-AA0V-01A	Tumor	TCGA-UB-AA0V	Stage I	G1	314.0	Alive	female	white	69.0
+TCGA-G3-AAV3-01A	Tumor	TCGA-G3-AAV3	Stage II	G2	412.0	Alive	female	white	58.0
+TCGA-EP-A3RK-01A	Tumor	TCGA-EP-A3RK	Stage IIIA	G2	363.0	Alive	male	white	73.0
+TCGA-2Y-A9H9-01A	Tumor	TCGA-2Y-A9H9	Stage I	G2	701.0	Alive	male	white	70.0
+TCGA-MI-A75H-01A	Tumor	TCGA-MI-A75H			747.0	Alive	male	white	77.0
+TCGA-BC-A8YO-01A	Tumor	TCGA-BC-A8YO	Stage IIIC	G3	562.0	Alive	female	white	66.0
+TCGA-GJ-A3OU-01A	Tumor	TCGA-GJ-A3OU	Stage I	G2	879.0	Alive	male	white	59.0
+TCGA-G3-AAV1-01A	Tumor	TCGA-G3-AAV1	Stage IIIC	G3	359.0	Dead	male	asian	51.0
+TCGA-DD-AAEB-01A	Tumor	TCGA-DD-AAEB	Stage I	G2	478.0	Alive	male	asian	60.0
+TCGA-EP-A3RK-11A	Normal	TCGA-EP-A3RK	Stage IIIA	G2	363.0	Alive	male	white	73.0
+TCGA-RC-A7S9-01A	Tumor	TCGA-RC-A7S9	Stage I	G3	640.0	Alive	female	asian	47.0
+TCGA-G3-A25V-01A	Tumor	TCGA-G3-A25V	Stage I	G2	860.0	Alive	male	white	68.0
+TCGA-CC-A9FS-01A	Tumor	TCGA-CC-A9FS	Stage II	G2	211.0	Alive	male	asian	55.0
+TCGA-UB-A7MC-01A	Tumor	TCGA-UB-A7MC	Stage IIIA	G3	500.0	Alive	male	white	59.0
+TCGA-G3-AAV7-01A	Tumor	TCGA-G3-AAV7	Stage II	G2	361.0	Alive	male	asian	38.0
+TCGA-BC-A10Y-01A	Tumor	TCGA-BC-A10Y		G3	711.0	Dead	male	white	76.0
+TCGA-DD-AACB-01A	Tumor	TCGA-DD-AACB	Stage I	G3	2324.0	Alive	female	asian	74.0
+TCGA-CC-5259-01A	Tumor	TCGA-CC-5259	Stage IIIC	G2	250.0	Alive	female	asian	60.0
+TCGA-CC-5258-01A	Tumor	TCGA-CC-5258	Stage II	G2	129.0	Dead	male	asian	48.0
+TCGA-BC-A5W4-01A	Tumor	TCGA-BC-A5W4	Stage 0		547.0	Dead	male	white	69.0
+TCGA-BC-A10Z-01A	Tumor	TCGA-BC-A10Z	Stage I	G2	34.0	Dead	female	white	62.0
+TCGA-DD-A4NO-01A	Tumor	TCGA-DD-A4NO	Stage I	G1	2245.0	Alive	male	white	65.0
+TCGA-KR-A7K7-01A	Tumor	TCGA-KR-A7K7	Stage II	G1	951.0	Alive	female	white	61.0
+TCGA-O8-A75V-01A	Tumor	TCGA-O8-A75V	Stage I	G2	538.0	Alive	male	Unknown	54.0
+TCGA-DD-A4NG-01A	Tumor	TCGA-DD-A4NG	Stage IIIA	G2	802.0	Dead	male	white	77.0
+TCGA-DD-A3A1-11A	Normal	TCGA-DD-A3A1	Stage IIIA	G2	233.0	Dead	male	not reported	65.0
+TCGA-G3-A6UC-01A	Tumor	TCGA-G3-A6UC	Stage IIIB	G2	671.0	Alive	male	white	65.0
+TCGA-CC-A3M9-01A	Tumor	TCGA-CC-A3M9	Stage IIIA	G3	300.0	Dead	male	asian	45.0
+TCGA-DD-AADI-01A	Tumor	TCGA-DD-AADI	Stage I	G3	1085.0	Alive	female	asian	43.0
+TCGA-DD-AADO-01A	Tumor	TCGA-DD-AADO	Stage I	G3	453.0	Alive	male	asian	55.0
+TCGA-CC-5263-01A	Tumor	TCGA-CC-5263	Stage IIIA	G1	129.0	Dead	male	asian	35.0
+TCGA-MI-A75C-01A	Tumor	TCGA-MI-A75C	Stage I	G3	291.0	Alive	male	white	64.0
+TCGA-DD-A4ND-01A	Tumor	TCGA-DD-A4ND	Stage I	G3	2746.0	Alive	female	white	56.0
+TCGA-CC-A9FV-01A	Tumor	TCGA-CC-A9FV	Stage IIIA	G2	0.0	Alive	male	asian	57.0
+TCGA-BW-A5NQ-01A	Tumor	TCGA-BW-A5NQ	Stage I	G3	0.0	Alive	male	white	63.0
+TCGA-DD-A1EH-01A	Tumor	TCGA-DD-A1EH	Stage III	G3	1495.0	Alive	male	white	23.0
+TCGA-ED-A7XP-01A	Tumor	TCGA-ED-A7XP	Stage II	G3	400.0	Alive	female	asian	53.0
+TCGA-2Y-A9H2-01A	Tumor	TCGA-2Y-A9H2	Stage I	G3	1731.0	Alive	female	white	64.0
+TCGA-CC-A8HS-01A	Tumor	TCGA-CC-A8HS	Stage IIIC	G1	300.0	Dead	male	asian	18.0
+TCGA-CC-A7IK-01A	Tumor	TCGA-CC-A7IK	Stage IIIA	G3	262.0	Dead	male	asian	59.0
+TCGA-CC-A7IH-01A	Tumor	TCGA-CC-A7IH	Stage IIIA	G1	365.0	Alive	male	asian	58.0
+TCGA-DD-AADU-01A	Tumor	TCGA-DD-AADU	Stage II	G3	554.0	Alive	male	asian	60.0
+TCGA-2Y-A9GV-01A	Tumor	TCGA-2Y-A9GV	Stage IV		2532.0	Dead	female	white	54.0
+TCGA-FV-A2QR-11A	Normal	TCGA-FV-A2QR	Stage I	G1	581.0	Dead	male	white	75.0
+TCGA-5R-AA1D-01A	Tumor	TCGA-5R-AA1D	Stage IIIA	G3	449.0	Alive	female	white	17.0
+TCGA-FV-A2QQ-01A	Tumor	TCGA-FV-A2QQ	Stage I	G2	729.0	Alive	male	white	80.0
+TCGA-CC-A7IF-01A	Tumor	TCGA-CC-A7IF	Stage IIIA	G1	649.0	Dead	male	asian	59.0
+TCGA-DD-A39V-11A	Normal	TCGA-DD-A39V	Stage II	G3	643.0	Dead	male	white	77.0
+TCGA-DD-A73E-01A	Tumor	TCGA-DD-A73E	Stage I	G1	44.0	Alive	male	white	66.0
+TCGA-DD-AAE9-01A	Tumor	TCGA-DD-AAE9	Stage I	G3	722.0	Alive	male	asian	69.0
+TCGA-XR-A8TC-01A	Tumor	TCGA-XR-A8TC	Stage I	G2	1339.0	Alive	female	white	43.0
+TCGA-ED-A7PX-01A	Tumor	TCGA-ED-A7PX	Stage II	G3	6.0	Alive	female	asian	48.0
+TCGA-G3-A7M8-01A	Tumor	TCGA-G3-A7M8	Stage I	G1	430.0	Alive	male	asian	31.0
+TCGA-DD-A4NP-01A	Tumor	TCGA-DD-A4NP	Stage I	G3	3308.0	Alive	male	white	32.0
+TCGA-G3-A25X-01A	Tumor	TCGA-G3-A25X	Stage II	G3	1779.0	Alive	male	asian	73.0
+TCGA-DD-A11C-11A	Normal	TCGA-DD-A11C	Stage I	G3	662.0	Alive	male	white	69.0
+TCGA-ED-A5KG-01A	Tumor	TCGA-ED-A5KG	Stage II	G2	854.0	Alive	female	asian	60.0
+TCGA-FV-A2QR-01A	Tumor	TCGA-FV-A2QR	Stage I	G1	581.0	Dead	male	white	75.0
+TCGA-DD-AACY-01A	Tumor	TCGA-DD-AACY	Stage I	G3	1450.0	Alive	male	asian	61.0
+TCGA-CC-A7IJ-01A	Tumor	TCGA-CC-A7IJ	Stage II	G3	382.0	Alive	male	asian	56.0
+TCGA-2Y-A9GX-01A	Tumor	TCGA-2Y-A9GX	Stage I	G2	2442.0	Alive	male	white	68.0
+TCGA-G3-AAUZ-01A	Tumor	TCGA-G3-AAUZ	Stage I	G2	480.0	Alive	male	Unknown	48.0
+TCGA-DD-AACK-01A	Tumor	TCGA-DD-AACK	Stage I	G2	9.0	Alive	male	asian	70.0
+TCGA-DD-A3A5-11A	Normal	TCGA-DD-A3A5	Stage III	G2	3125.0	Dead	female	white	66.0
+TCGA-DD-A3A5-01A	Tumor	TCGA-DD-A3A5	Stage III	G2	3125.0	Dead	female	white	66.0
+TCGA-CC-A123-01A	Tumor	TCGA-CC-A123	Stage IIIA	G1	219.0	Alive	female	asian	24.0
+TCGA-DD-AACC-01A	Tumor	TCGA-DD-AACC	Stage I	G2	1685.0	Dead	male	asian	61.0
+TCGA-FV-A23B-11A	Normal	TCGA-FV-A23B	Stage II		1852.0	Dead	female	white	70.0
+TCGA-RG-A7D4-01A	Tumor	TCGA-RG-A7D4	Stage II	G2	1098.0	Alive	male	black or african american	69.0
+TCGA-CC-5262-01A	Tumor	TCGA-CC-5262	Stage IIIC	G1	103.0	Dead	male	asian	67.0
+TCGA-DD-AADK-01A	Tumor	TCGA-DD-AADK	Stage II	G3	1049.0	Alive	female	asian	68.0
+TCGA-MI-A75E-01A	Tumor	TCGA-MI-A75E	Stage IIIC	G2	507.0	Alive	male	white	61.0
+TCGA-DD-AADA-01A	Tumor	TCGA-DD-AADA	Stage I	G3	1233.0	Alive	female	asian	66.0
+TCGA-BC-A10U-11A	Normal	TCGA-BC-A10U		G2	837.0	Dead	male	white	69.0
+TCGA-MI-A75I-01A	Tumor	TCGA-MI-A75I		G1	630.0	Alive	male	black or african american	61.0
+TCGA-G3-A7M7-01A	Tumor	TCGA-G3-A7M7	Stage I	G1	361.0	Alive	male	white	65.0
+TCGA-2Y-A9GU-01A	Tumor	TCGA-2Y-A9GU	Stage I	G2	1939.0	Alive	female	white	55.0
+TCGA-DD-AAD3-01A	Tumor	TCGA-DD-AAD3	Stage I	G2	1295.0	Alive	male	asian	43.0
+TCGA-DD-A3A6-11A	Normal	TCGA-DD-A3A6	Stage II	G2	3258.0	Dead	female	white	72.0
+TCGA-FV-A3I1-01A	Tumor	TCGA-FV-A3I1	Stage II	G2	247.0	Dead	female	white	81.0
+TCGA-2Y-A9HA-01A	Tumor	TCGA-2Y-A9HA	Stage II	G2	36.0	Dead	male	white	70.0
+TCGA-ZS-A9CD-01A	Tumor	TCGA-ZS-A9CD	Stage II	G2	1386.0	Dead	male	white	73.0
+TCGA-DD-A1EB-01A	Tumor	TCGA-DD-A1EB	Stage I	G2	2017.0	Alive	female	not reported	72.0
+TCGA-DD-A1EB-11A	Normal	TCGA-DD-A1EB	Stage I	G2	2017.0	Alive	female	not reported	72.0
+TCGA-DD-AAD5-01A	Tumor	TCGA-DD-AAD5	Stage I	G3	1345.0	Alive	male	asian	54.0
+TCGA-WQ-AB4B-01A	Tumor	TCGA-WQ-AB4B	Stage II	G2	395.0	Alive	male	white	62.0
+TCGA-DD-A3A6-01A	Tumor	TCGA-DD-A3A6	Stage II	G2	3258.0	Dead	female	white	72.0
+TCGA-T1-A6J8-01A	Tumor	TCGA-T1-A6J8		G2	23.0	Alive	male	white	68.0
+TCGA-FV-A3I1-11A	Normal	TCGA-FV-A3I1	Stage II	G2	247.0	Dead	female	white	81.0
+TCGA-DD-A4NV-01A	Tumor	TCGA-DD-A4NV	Stage IIIA	G1	2398.0	Alive	male	white	61.0
+TCGA-DD-AADF-01A	Tumor	TCGA-DD-AADF	Stage I	G4	115.0	Dead	female	asian	64.0
+TCGA-UB-A7MA-01A	Tumor	TCGA-UB-A7MA	Stage II	G2	848.0	Alive	female	white	62.0
+TCGA-DD-AACP-01A	Tumor	TCGA-DD-AACP	Stage I	G3	415.0	Alive	male	asian	64.0
+TCGA-ZP-A9CY-01A	Tumor	TCGA-ZP-A9CY		G1	782.0	Alive	female	white	66.0
+TCGA-FV-A4ZQ-01A	Tumor	TCGA-FV-A4ZQ	Stage I	G2	12.0	Alive	male	white	52.0
+TCGA-DD-A39X-11A	Normal	TCGA-DD-A39X	Stage I	G2	1694.0	Dead	female	white	78.0
+TCGA-FV-A23B-01A	Tumor	TCGA-FV-A23B	Stage II		1852.0	Dead	female	white	70.0
+TCGA-2Y-A9H1-01A	Tumor	TCGA-2Y-A9H1	Stage I	G2	1229.0	Dead	male	white	58.0
+TCGA-DD-A114-01A	Tumor	TCGA-DD-A114	Stage II	G3	1149.0	Dead	male	black or african american	42.0
+TCGA-DD-AAEH-01A	Tumor	TCGA-DD-AAEH	Stage I	G2	784.0	Alive	male	asian	73.0
+TCGA-WX-AA46-01A	Tumor	TCGA-WX-AA46	Stage II	G1	756.0	Alive	male	white	61.0
+TCGA-LG-A9QC-01A	Tumor	TCGA-LG-A9QC	Stage I	G2	425.0	Alive	male	white	48.0
+TCGA-DD-A4NF-01A	Tumor	TCGA-DD-A4NF	Stage I	G2	942.0	Alive	male	white	72.0
+TCGA-BC-A10U-01A	Tumor	TCGA-BC-A10U		G2	837.0	Dead	male	white	69.0
+TCGA-FV-A4ZP-01A	Tumor	TCGA-FV-A4ZP	Stage IIIA	G2	2486.0	Dead	male	white	78.0
+TCGA-MR-A8JO-01A	Tumor	TCGA-MR-A8JO	Stage I	G3	330.0	Alive	male	white	34.0
+TCGA-BC-A3KF-01A	Tumor	TCGA-BC-A3KF	Stage I	G2	8.0	Alive	female	white	66.0
+TCGA-BC-4073-01B	Tumor	TCGA-BC-4073	Stage IIIA	G3	849.0	Alive	male	white	73.0
+TCGA-CC-A9FW-01A	Tumor	TCGA-CC-A9FW	Stage IIIA	G2	248.0	Alive	male	asian	68.0
+TCGA-G3-AAV4-01A	Tumor	TCGA-G3-AAV4	Stage I	G1	27.0	Dead	female	white	83.0
+TCGA-DD-A114-11A	Normal	TCGA-DD-A114	Stage II	G3	1149.0	Dead	male	black or african american	42.0
+TCGA-DD-A1EC-11A	Normal	TCGA-DD-A1EC	Stage I	G3	602.0	Alive	female	white	20.0
+TCGA-XR-A8TE-01A	Tumor	TCGA-XR-A8TE	Stage IIIA	G1	925.0	Alive	male	white	16.0
+TCGA-DD-AADS-01A	Tumor	TCGA-DD-AADS	Stage I	G2	474.0	Alive	male	asian	63.0
+TCGA-DD-AACT-01A	Tumor	TCGA-DD-AACT	Stage I	G2	1562.0	Alive	female	asian	69.0
+TCGA-ES-A2HS-01A	Tumor	TCGA-ES-A2HS	Stage I	G2	688.0	Dead	male	white	80.0
+TCGA-BC-A110-11A	Normal	TCGA-BC-A110		G1	2116.0	Dead	female	black or african american	51.0
+TCGA-BC-A110-01A	Tumor	TCGA-BC-A110		G1	2116.0	Dead	female	black or african american	51.0
+TCGA-BD-A3ER-01A	Tumor	TCGA-BD-A3ER	Stage II	G2	1115.0	Alive	male	white	62.0
+TCGA-ZP-A9D2-01A	Tumor	TCGA-ZP-A9D2		G2	765.0	Dead	male	white	51.0
+TCGA-RC-A6M3-01A	Tumor	TCGA-RC-A6M3	Stage II	G3	0.0	Alive	male	american indian or alaska native	24.0
+TCGA-CC-5261-01A	Tumor	TCGA-CC-5261	Stage II	G2	97.0	Dead	male	asian	44.0
+TCGA-DD-AAVZ-01A	Tumor	TCGA-DD-AAVZ	Stage I	G2	1900.0	Alive	male	asian	38.0
+TCGA-CC-A8HT-01A	Tumor	TCGA-CC-A8HT	Stage IIIA	G2	140.0	Dead	male	asian	74.0
+TCGA-DD-A39X-01A	Tumor	TCGA-DD-A39X	Stage I	G2	1694.0	Dead	female	white	78.0
+TCGA-K7-A5RG-01A	Tumor	TCGA-K7-A5RG	Stage I	G1	519.0	Alive	male	black or african american	66.0
+TCGA-CC-A3MC-01A	Tumor	TCGA-CC-A3MC	Stage IIIA	G2	363.0	Alive	male	asian	54.0
+TCGA-DD-AADL-01A	Tumor	TCGA-DD-AADL	Stage I	G4	636.0	Alive	male	asian	58.0
+TCGA-LG-A9QD-01A	Tumor	TCGA-LG-A9QD	Stage IIIA	G2	366.0	Alive	male	white	68.0
+TCGA-KR-A7K2-01A	Tumor	TCGA-KR-A7K2	Stage I	G1	829.0	Alive	male	white	64.0
+TCGA-UB-A7MD-01A	Tumor	TCGA-UB-A7MD	Stage I	G3	52.0	Dead	male	black or african american	67.0
+TCGA-DD-A1EC-01A	Tumor	TCGA-DD-A1EC	Stage I	G3	602.0	Alive	female	white	20.0
+TCGA-DD-AACA-01A	Tumor	TCGA-DD-AACA	Stage I	G3	2301.0	Alive	male	asian	65.0
+TCGA-DD-AADN-01A	Tumor	TCGA-DD-AADN	Stage I	G4	898.0	Alive	male	asian	59.0
+TCGA-DD-AACA-02B	Tumor	TCGA-DD-AACA	Stage I	G3	2301.0	Alive	male	asian	65.0
+TCGA-DD-AACA-02A	Tumor	TCGA-DD-AACA	Stage I	G3	2301.0	Alive	male	asian	65.0
+TCGA-G3-A25T-01A	Tumor	TCGA-G3-A25T	Stage IIIA	G2	1553.0	Alive	female	white	45.0
+TCGA-WJ-A86L-01A	Tumor	TCGA-WJ-A86L	Stage I	G2	345.0	Alive	female	white	68.0
+TCGA-K7-A5RF-01A	Tumor	TCGA-K7-A5RF	Stage I	G1	631.0	Alive	male	white	64.0
+TCGA-CC-A1HT-01A	Tumor	TCGA-CC-A1HT	Stage IIIA	G3	101.0	Dead	male	asian	50.0
+TCGA-DD-AACO-01A	Tumor	TCGA-DD-AACO	Stage I	G3	1876.0	Alive	male	asian	40.0
+TCGA-DD-AAVP-01A	Tumor	TCGA-DD-AAVP	Stage I	G1	2752.0	Alive	male	asian	48.0
+TCGA-DD-A11C-01A	Tumor	TCGA-DD-A11C	Stage I	G3	662.0	Alive	male	white	69.0
+TCGA-DD-AAE1-01A	Tumor	TCGA-DD-AAE1	Stage I	G3	552.0	Alive	male	asian	52.0
+TCGA-BD-A2L6-11A	Normal	TCGA-BD-A2L6		G2	1363.0	Alive	male	white	69.0
+TCGA-DD-AACQ-01A	Tumor	TCGA-DD-AACQ	Stage II	G3	432.0	Dead	male	asian	50.0
+TCGA-DD-AAVW-01A	Tumor	TCGA-DD-AAVW	Stage I	G2	2317.0	Alive	male	asian	35.0
+TCGA-DD-A11B-11A	Normal	TCGA-DD-A11B	Stage I	G2	14.0	Dead	male	white	73.0
+TCGA-CC-A8HU-01A	Tumor	TCGA-CC-A8HU	Stage IIIA	G3	344.0	Dead	female	asian	39.0
+TCGA-G3-A25Y-01A	Tumor	TCGA-G3-A25Y	Stage I	G3	452.0	Dead	female	asian	52.0
+TCGA-ED-A7XO-01A	Tumor	TCGA-ED-A7XO	Stage IIIA	G2	427.0	Alive	male	asian	29.0
+TCGA-CC-A5UE-01A	Tumor	TCGA-CC-A5UE	Stage IIIB	G2	272.0	Dead	male	asian	48.0
+TCGA-RC-A7SB-01A	Tumor	TCGA-RC-A7SB	Stage II	G2	588.0	Alive	male	asian	53.0
+TCGA-2V-A95S-01A	Tumor	TCGA-2V-A95S	Stage II	G3		Alive	male	asian	
+TCGA-2Y-A9GT-01A	Tumor	TCGA-2Y-A9GT	Stage I	G2	1624.0	Dead	male	white	51.0
+TCGA-DD-AAW1-01A	Tumor	TCGA-DD-AAW1	Stage IIIA	G2	1989.0	Alive	male	asian	55.0
+TCGA-CC-A5UD-01A	Tumor	TCGA-CC-A5UD	Stage IIIA	G2	304.0	Dead	male	asian	45.0
+TCGA-G3-A3CH-01A	Tumor	TCGA-G3-A3CH	Stage IIIA	G2	780.0	Alive	male	asian	53.0
+TCGA-DD-A1EI-11A	Normal	TCGA-DD-A1EI	Stage I	G2	183.0	Alive	male	asian	46.0
+TCGA-ZP-A9D1-01A	Tumor	TCGA-ZP-A9D1		G2	21.0	Alive	female	white	56.0
+TCGA-DD-A39Z-01A	Tumor	TCGA-DD-A39Z	Stage II	G2	601.0	Dead	female	not reported	43.0
+TCGA-DD-A3A9-01A	Tumor	TCGA-DD-A3A9	Stage IVB	G2	931.0	Dead	female	white	64.0
+TCGA-DD-AACX-01A	Tumor	TCGA-DD-AACX	Stage II	G3	170.0	Alive	male	asian	66.0
+TCGA-DD-A115-01A	Tumor	TCGA-DD-A115	Stage IIIA	G2	2542.0	Dead	male	white	53.0
+TCGA-DD-A39W-11A	Normal	TCGA-DD-A39W	Stage III	G2	827.0	Dead	female	white	29.0
+TCGA-DD-A39W-01A	Tumor	TCGA-DD-A39W	Stage III	G2	827.0	Dead	female	white	29.0
+TCGA-DD-AADQ-01A	Tumor	TCGA-DD-AADQ	Stage II	G3	436.0	Alive	male	asian	59.0
+TCGA-2Y-A9H0-01A	Tumor	TCGA-2Y-A9H0	Stage IIIA	G1	3675.0	Alive	male	white	49.0
+TCGA-KR-A7K8-01A	Tumor	TCGA-KR-A7K8	Stage I	G1	906.0	Alive	male	Unknown	57.0
+TCGA-BC-A216-11A	Normal	TCGA-BC-A216	Stage IIIA	G2	1351.0	Alive	female	white	62.0
+TCGA-DD-A3A3-01A	Tumor	TCGA-DD-A3A3	Stage I	G2	535.0	Dead	male	asian	45.0
+TCGA-DD-A3A3-11A	Normal	TCGA-DD-A3A3	Stage I	G2	535.0	Dead	male	asian	45.0
+TCGA-ED-A459-01A	Tumor	TCGA-ED-A459	Stage II	G2	910.0	Alive	male	asian	47.0
+TCGA-BC-A10S-01A	Tumor	TCGA-BC-A10S		G1	1423.0	Dead	male	white	81.0
+TCGA-DD-AAE2-01A	Tumor	TCGA-DD-AAE2	Stage I	G3	638.0	Alive	male	asian	51.0
+TCGA-DD-A4NK-01A	Tumor	TCGA-DD-A4NK	Stage IIIA	G2	1210.0	Dead	female	white	80.0
+TCGA-DD-AA3A-01A	Tumor	TCGA-DD-AA3A	Stage I	G4	410.0	Dead	female	white	81.0
+TCGA-BC-4072-01B	Tumor	TCGA-BC-4072	Stage IIIA	G3	1490.0	Dead	female	white	74.0
+TCGA-DD-AADB-01A	Tumor	TCGA-DD-AADB	Stage I	G4	1242.0	Alive	male	asian	51.0
+TCGA-DD-A119-11A	Normal	TCGA-DD-A119	Stage IV	G3	223.0	Dead	male	asian	40.0
+TCGA-DD-A1EG-11A	Normal	TCGA-DD-A1EG	Stage I	G3	1372.0	Dead	male	white	76.0
+TCGA-ZS-A9CE-01A	Tumor	TCGA-ZS-A9CE	Stage II	G1	1241.0	Alive	female	white	79.0
+TCGA-DD-A118-01A	Tumor	TCGA-DD-A118	Stage II	G2	3437.0	Alive	female	white	77.0
+TCGA-CC-A5UC-01A	Tumor	TCGA-CC-A5UC	Stage IIIA	G3	347.0	Dead	male	asian	63.0
+TCGA-ZS-A9CF-01A	Tumor	TCGA-ZS-A9CF	Stage II	G2	2412.0	Alive	male	white	64.0
+TCGA-G3-A7M5-01A	Tumor	TCGA-G3-A7M5	Stage I	G2	447.0	Alive	male	asian	76.0
+TCGA-BC-A10T-01A	Tumor	TCGA-BC-A10T		G1	837.0	Dead	male	white	76.0
+TCGA-ED-A97K-01A	Tumor	TCGA-ED-A97K	Stage IIIA	G2	6.0	Alive	male	asian	54.0
+TCGA-FV-A496-01A	Tumor	TCGA-FV-A496	Stage I	G2	10.0	Alive	female	white	84.0
+TCGA-ZP-A9CV-01A	Tumor	TCGA-ZP-A9CV		G1	1088.0	Dead	male	white	59.0
+TCGA-DD-A3A1-01A	Tumor	TCGA-DD-A3A1	Stage IIIA	G2	233.0	Dead	male	not reported	65.0
+TCGA-DD-A116-01A	Tumor	TCGA-DD-A116	Stage IIIA	G3	1622.0	Dead	male	asian	68.0
+TCGA-DD-AAE6-01A	Tumor	TCGA-DD-AAE6	Stage I	G2	141.0	Alive	female	asian	59.0
+TCGA-DD-A113-11A	Normal	TCGA-DD-A113	Stage II	G3	2425.0	Alive	female	white	55.0
+TCGA-DD-AACN-01A	Tumor	TCGA-DD-AACN	Stage I	G3	1302.0	Alive	male	asian	32.0
+TCGA-2Y-A9GZ-01A	Tumor	TCGA-2Y-A9GZ	Stage II	G2	848.0	Dead	female	white	82.0
+TCGA-BD-A2L6-01A	Tumor	TCGA-BD-A2L6		G2	1363.0	Alive	male	white	69.0
+TCGA-G3-A5SI-01A	Tumor	TCGA-G3-A5SI	Stage II	G2	768.0	Dead	male	asian	44.0
+TCGA-5C-A9VG-01A	Tumor	TCGA-5C-A9VG	Stage II	G2	328.0	Alive	male	white	58.0
+TCGA-DD-A1ED-01A	Tumor	TCGA-DD-A1ED	Stage I	G1	2301.0	Alive	male	white	68.0
+TCGA-G3-AAV2-01A	Tumor	TCGA-G3-AAV2	Stage I	G1	372.0	Alive	male	white	50.0
+TCGA-G3-A7M9-01A	Tumor	TCGA-G3-A7M9	Stage IIIB	G2	56.0	Dead	male	white	70.0
+TCGA-XR-A8TF-01A	Tumor	TCGA-XR-A8TF	Stage I	G1	693.0	Dead	male	white	74.0
+TCGA-DD-A1EF-01A	Tumor	TCGA-DD-A1EF	Stage I	G3	394.0	Dead	female	white	57.0
+TCGA-MI-A75G-01A	Tumor	TCGA-MI-A75G	Stage II	G2	698.0	Alive	male	white	63.0
+TCGA-DD-AADJ-01A	Tumor	TCGA-DD-AADJ	Stage I	G3	1066.0	Alive	female	asian	70.0
+TCGA-DD-AACH-01A	Tumor	TCGA-DD-AACH	Stage II	G3	195.0	Dead	male	asian	69.0
+TCGA-DD-A73D-01A	Tumor	TCGA-DD-A73D	Stage II	G1	693.0	Alive	female	white	68.0
+TCGA-CC-A7IE-01A	Tumor	TCGA-CC-A7IE	Stage IIIA	G2	217.0	Dead	male	asian	57.0
+TCGA-RC-A6M4-01A	Tumor	TCGA-RC-A6M4	Stage IIIA	G2	22.0	Alive	female	white	74.0
+TCGA-G3-A25Z-01A	Tumor	TCGA-G3-A25Z	Stage I	G2	655.0	Alive	male	asian	58.0
+TCGA-BC-A10W-11A	Normal	TCGA-BC-A10W		G3	91.0	Dead	male	asian	50.0
+TCGA-ED-A66Y-01A	Tumor	TCGA-ED-A66Y	Stage IIIA	G3	296.0	Dead	female	asian	51.0
+TCGA-FV-A3R2-01A	Tumor	TCGA-FV-A3R2	Stage I		194.0	Dead	male	white	75.0
+TCGA-FV-A3R2-11A	Normal	TCGA-FV-A3R2	Stage I		194.0	Dead	male	white	75.0
+TCGA-DD-AAE3-01A	Tumor	TCGA-DD-AAE3	Stage I	G2	566.0	Alive	male	asian	50.0
+TCGA-DD-A1EI-01A	Tumor	TCGA-DD-A1EI	Stage I	G2	183.0	Alive	male	asian	46.0
+TCGA-DD-AADC-01A	Tumor	TCGA-DD-AADC	Stage I	G3	425.0	Dead	male	asian	53.0
+TCGA-BC-A10X-01A	Tumor	TCGA-BC-A10X	Stage IIIA	G2	770.0	Dead	female	white	52.0
+TCGA-FV-A3I0-01A	Tumor	TCGA-FV-A3I0	Stage II	G2	848.0	Alive	female	white	76.0
+TCGA-BC-A112-01A	Tumor	TCGA-BC-A112		G2	153.0	Dead	male	white	80.0
+TCGA-DD-AACD-01A	Tumor	TCGA-DD-AACD	Stage I	G4	381.0	Dead	male	asian	48.0
+TCGA-ZS-A9CG-01A	Tumor	TCGA-ZS-A9CG	Stage II	G2	341.0	Alive	male	white	55.0
+TCGA-NI-A8LF-01A	Tumor	TCGA-NI-A8LF	Stage I	G3	799.0	Alive	male	white	74.0
+TCGA-DD-A4NI-01A	Tumor	TCGA-DD-A4NI	Stage II	G2	816.0	Alive	male	white	67.0
+TCGA-DD-A1EJ-01A	Tumor	TCGA-DD-A1EJ	Stage IIIC	G2	1005.0	Dead	female	white	71.0
+TCGA-DD-A73B-01A	Tumor	TCGA-DD-A73B	Stage I	G2	283.0	Dead	female	white	72.0
+TCGA-DD-A4NR-01A	Tumor	TCGA-DD-A4NR	Stage I	G3	9.0	Dead	female	white	85.0
+TCGA-KR-A7K0-01A	Tumor	TCGA-KR-A7K0	Stage I	G1	65.0	Dead	male	white	65.0
+TCGA-CC-A8HV-01A	Tumor	TCGA-CC-A8HV	Stage II	G2	279.0	Dead	female	asian	51.0
+TCGA-DD-A11A-01A	Tumor	TCGA-DD-A11A	Stage I	G3	79.0	Alive	male	black or african american	67.0
+TCGA-DD-A11A-11A	Normal	TCGA-DD-A11A	Stage I	G3	79.0	Alive	male	black or african american	67.0
+TCGA-CC-5264-01A	Tumor	TCGA-CC-5264	Stage IIIA	G2	102.0	Dead	male	asian	71.0
+TCGA-DD-AACF-01A	Tumor	TCGA-DD-AACF	Stage I	G3	365.0	Dead	male	asian	68.0
+TCGA-DD-AACW-01A	Tumor	TCGA-DD-AACW	Stage I	G3	1424.0	Alive	male	asian	43.0
+TCGA-2Y-A9GY-01A	Tumor	TCGA-2Y-A9GY	Stage II	G3	757.0	Dead	female	white	64.0
+TCGA-BC-A3KG-01A	Tumor	TCGA-BC-A3KG	Stage II	G3	680.0	Alive	female	white	68.0
+TCGA-ES-A2HT-11A	Normal	TCGA-ES-A2HT	Stage I	G2	438.0	Dead	male	black or african american	54.0
+TCGA-BC-A69H-01A	Tumor	TCGA-BC-A69H	Stage II	G3	444.0	Alive	male	white	64.0
+TCGA-K7-A6G5-01A	Tumor	TCGA-K7-A6G5	Stage I	G2	512.0	Alive	male	white	66.0
+TCGA-DD-AADR-01A	Tumor	TCGA-DD-AADR	Stage I	G3	2028.0	Alive	male	asian	58.0
+TCGA-DD-A73F-01A	Tumor	TCGA-DD-A73F	Stage I	G1	1085.0	Alive	female	white	77.0
+TCGA-DD-AACV-01A	Tumor	TCGA-DD-AACV	Stage I	G3	1531.0	Alive	male	asian	53.0
+TCGA-UB-A7MF-01A	Tumor	TCGA-UB-A7MF	Stage II		214.0	Dead	male	white	56.0
+TCGA-DD-AACU-01A	Tumor	TCGA-DD-AACU	Stage I	G3	1567.0	Alive	male	asian	59.0
+TCGA-ED-A7PY-01A	Tumor	TCGA-ED-A7PY	Stage II	G3	390.0	Alive	female	asian	20.0
+TCGA-G3-A5SL-01A	Tumor	TCGA-G3-A5SL	Stage II	G2	621.0	Alive	male	white	70.0
+TCGA-EP-A12J-11A	Normal	TCGA-EP-A12J	Stage I	G1	570.0	Alive	male	black or african american	62.0
+TCGA-DD-A3A4-01A	Tumor	TCGA-DD-A3A4	Stage IIIA	G3	612.0	Dead	male	white	37.0
+TCGA-DD-AAVS-01A	Tumor	TCGA-DD-AAVS	Stage I	G2	1823.0	Alive	male	asian	56.0
+TCGA-DD-A11D-01A	Tumor	TCGA-DD-A11D	Stage I	G2	1560.0	Dead	female	white	57.0
+TCGA-DD-A4NB-01A	Tumor	TCGA-DD-A4NB	Stage I	G2	989.0	Alive	male	white	25.0
+TCGA-5R-AA1C-01A	Tumor	TCGA-5R-AA1C	Stage II	G2	520.0	Alive	male	white	57.0
+TCGA-ED-A8O5-01A	Tumor	TCGA-ED-A8O5	Stage IIIA	G3	406.0	Alive	female	asian	59.0
+TCGA-MR-A520-01A	Tumor	TCGA-MR-A520	Stage I	G1	229.0	Alive	male	white	58.0
+TCGA-BC-A10W-01A	Tumor	TCGA-BC-A10W		G3	91.0	Dead	male	asian	50.0
+TCGA-G3-A3CG-01A	Tumor	TCGA-G3-A3CG	Stage IIB			Alive	male	white	80.0
+TCGA-BC-A10X-11A	Normal	TCGA-BC-A10X	Stage IIIA	G2	770.0	Dead	female	white	52.0
+TCGA-FV-A3I0-11A	Normal	TCGA-FV-A3I0	Stage II	G2	848.0	Alive	female	white	76.0
+TCGA-G3-AAV5-01A	Tumor	TCGA-G3-AAV5	Stage II	G2	354.0	Alive	male	white	67.0
+TCGA-DD-AAD6-01A	Tumor	TCGA-DD-AAD6	Stage IIIA	G3	672.0	Alive	male	asian	66.0
+TCGA-FV-A3R3-01A	Tumor	TCGA-FV-A3R3	Stage I	G2	366.0	Dead	female	white	38.0
+TCGA-2Y-A9GW-01A	Tumor	TCGA-2Y-A9GW	Stage I	G2	1271.0	Dead	male	white	64.0
+TCGA-EP-A3JL-01A	Tumor	TCGA-EP-A3JL	Stage I	G2	303.0	Alive	male	white	76.0
+TCGA-DD-A4NH-01A	Tumor	TCGA-DD-A4NH	Stage IIIB	G3	917.0	Alive	female	white	65.0
+TCGA-ZP-A9D4-01A	Tumor	TCGA-ZP-A9D4		G1	395.0	Alive	female	white	64.0
+TCGA-EP-A2KA-01A	Tumor	TCGA-EP-A2KA	Stage IIIA	G3	627.0	Dead	female	white	52.0
+TCGA-DD-AAE7-01A	Tumor	TCGA-DD-AAE7	Stage I			Alive	male	asian	72.0
+TCGA-DD-A39Z-11A	Normal	TCGA-DD-A39Z	Stage II	G2	601.0	Dead	female	not reported	43.0
+TCGA-GJ-A9DB-01A	Tumor	TCGA-GJ-A9DB	Stage I	G2	67.0	Dead	male	white	68.0
+TCGA-DD-A73G-01A	Tumor	TCGA-DD-A73G	Stage I	G3	3478.0	Alive	female	white	73.0
+TCGA-WQ-A9G7-01A	Tumor	TCGA-WQ-A9G7		G3	30.0	Alive	female	white	71.0
+TCGA-5R-AAAM-01A	Tumor	TCGA-5R-AAAM	Stage II	G2	46.0	Dead	female	white	65.0
+TCGA-DD-AAC8-01A	Tumor	TCGA-DD-AAC8	Stage I	G3	16.0	Dead	male	asian	72.0
+TCGA-2Y-A9H5-01A	Tumor	TCGA-2Y-A9H5	Stage I	G3	555.0	Dead	female	white	59.0
+TCGA-BC-A216-01A	Tumor	TCGA-BC-A216	Stage IIIA	G2	1351.0	Alive	female	white	62.0
+TCGA-DD-A1EJ-11A	Normal	TCGA-DD-A1EJ	Stage IIIC	G2	1005.0	Dead	female	white	71.0
+TCGA-DD-AADV-01A	Tumor	TCGA-DD-AADV	Stage I	G3	574.0	Alive	male	asian	50.0
+TCGA-WX-AA44-01A	Tumor	TCGA-WX-AA44	Stage I	G3	615.0	Alive	female	white	64.0
+TCGA-XR-A8TD-01A	Tumor	TCGA-XR-A8TD	Stage IIIB	G3	1030.0	Alive	female	white	49.0
+TCGA-DD-A1EE-11A	Normal	TCGA-DD-A1EE	Stage IIIA	G3	349.0	Dead	male	white	73.0
+TCGA-DD-A1EE-01A	Tumor	TCGA-DD-A1EE	Stage IIIA	G3	349.0	Dead	male	white	73.0
+TCGA-DD-A119-01A	Tumor	TCGA-DD-A119	Stage IV	G3	223.0	Dead	male	asian	40.0
+TCGA-BC-A10Z-11A	Normal	TCGA-BC-A10Z	Stage I	G2	34.0	Dead	female	white	62.0
+TCGA-DD-A1EG-01A	Tumor	TCGA-DD-A1EG	Stage I	G3	1372.0	Dead	male	white	76.0
+TCGA-DD-AAVQ-01A	Tumor	TCGA-DD-AAVQ	Stage I	G2	2728.0	Alive	male	asian	38.0
+TCGA-BC-A10T-11A	Normal	TCGA-BC-A10T		G1	837.0	Dead	male	white	76.0
+TCGA-ED-A7PZ-01A	Tumor	TCGA-ED-A7PZ	Stage II	G2	6.0	Alive	male	asian	61.0
+TCGA-4R-AA8I-01A	Tumor	TCGA-4R-AA8I	Stage II	G2	262.0	Dead	male	white	66.0
+TCGA-3K-AAZ8-01A	Tumor	TCGA-3K-AAZ8	Stage IIIB	G1	396.0	Alive	male	black or african american	65.0
+TCGA-ED-A627-01A	Tumor	TCGA-ED-A627	Stage I	G2	423.0	Alive	male	white	74.0
+TCGA-2Y-A9GS-01A	Tumor	TCGA-2Y-A9GS		G2	724.0	Dead	male	white	58.0
+TCGA-ED-A82E-01A	Tumor	TCGA-ED-A82E	Stage IIIA	G2	408.0	Alive	female	asian	60.0
+TCGA-2Y-A9H3-01A	Tumor	TCGA-2Y-A9H3	Stage II	G1	1516.0	Alive	male	white	45.0
+TCGA-DD-A3A4-11A	Normal	TCGA-DD-A3A4	Stage IIIA	G3	612.0	Dead	male	white	37.0
+TCGA-DD-AACE-01A	Tumor	TCGA-DD-AACE	Stage I	G3	2184.0	Alive	male	asian	62.0
+TCGA-DD-A113-01A	Tumor	TCGA-DD-A113	Stage II	G3	2425.0	Alive	female	white	55.0
+TCGA-UB-A7MB-01A	Tumor	TCGA-UB-A7MB	Stage II	G3	601.0	Alive	male	white	24.0
+TCGA-2Y-A9H7-01A	Tumor	TCGA-2Y-A9H7	Stage I	G2	1168.0	Alive	female	white	81.0
+TCGA-DD-A1EL-11A	Normal	TCGA-DD-A1EL	Stage II	G3	415.0	Dead	male	black or african american	23.0
+TCGA-DD-A1EL-01A	Tumor	TCGA-DD-A1EL	Stage II	G3	415.0	Dead	male	black or african american	23.0
+TCGA-DD-AAD8-01A	Tumor	TCGA-DD-AAD8	Stage I	G2	1219.0	Alive	female	asian	73.0
+TCGA-G3-A7M6-01A	Tumor	TCGA-G3-A7M6	Stage I	G3	632.0	Alive	female	white	60.0
+TCGA-DD-A3A2-11A	Normal	TCGA-DD-A3A2	Stage I	G1	2131.0	Dead	female	white	76.0
+TCGA-RC-A7SH-01A	Tumor	TCGA-RC-A7SH	Stage II	G3	468.0	Alive	male	asian	42.0
+TCGA-WX-AA47-01A	Tumor	TCGA-WX-AA47	Stage IIIA	G2	556.0	Dead	female	white	33.0
+TCGA-DD-AAEE-01A	Tumor	TCGA-DD-AAEE	Stage I	G4	810.0	Alive	male	asian	55.0
+TCGA-BC-A10Q-01A	Tumor	TCGA-BC-A10Q			1135.0	Dead	female	white	72.0
+TCGA-DD-AAEI-01A	Tumor	TCGA-DD-AAEI	Stage I	G2	1531.0	Alive	male	asian	72.0
+TCGA-G3-A3CK-01A	Tumor	TCGA-G3-A3CK	Stage I	G2	585.0	Alive	male	asian	61.0
+TCGA-G3-A3CH-11A	Normal	TCGA-G3-A3CH	Stage IIIA	G2	780.0	Alive	male	asian	53.0
+TCGA-DD-AAED-01A	Tumor	TCGA-DD-AAED	Stage I	G3	763.0	Alive	male	asian	51.0
+TCGA-5C-A9VH-01A	Tumor	TCGA-5C-A9VH	Stage I	G2	322.0	Alive	male	white	70.0
+TCGA-CC-A9FU-01A	Tumor	TCGA-CC-A9FU	Stage IIIA	G2	0.0	Alive	female	asian	52.0
+TCGA-CC-A3MA-01A	Tumor	TCGA-CC-A3MA	Stage IIIA	G2	303.0	Dead	male	asian	61.0
+TCGA-DD-AAE0-01A	Tumor	TCGA-DD-AAE0	Stage IIIA	G4	555.0	Alive	female	asian	45.0
+TCGA-DD-A3A7-01A	Tumor	TCGA-DD-A3A7	Stage IIIB	G3	419.0	Dead	male	Unknown	67.0
+TCGA-BC-A10Y-11A	Normal	TCGA-BC-A10Y		G3	711.0	Dead	male	white	76.0
+TCGA-DD-AADM-01A	Tumor	TCGA-DD-AADM	Stage II	G3	12.0	Dead	male	asian	58.0
+TCGA-BC-A217-01A	Tumor	TCGA-BC-A217	Stage II	G3	1397.0	Dead	female	white	75.0
+TCGA-DD-A3A8-01A	Tumor	TCGA-DD-A3A8	Stage II	G2	11.0	Dead	male	white	75.0
+TCGA-G3-AAV0-01A	Tumor	TCGA-G3-AAV0	Stage I	G2	476.0	Alive	male	asian	58.0
+TCGA-DD-A3A8-11A	Normal	TCGA-DD-A3A8	Stage II	G2	11.0	Dead	male	white	75.0
+TCGA-BC-A69I-01A	Tumor	TCGA-BC-A69I	Stage I	G1	387.0	Alive	male	white	69.0
+TCGA-RC-A7SF-01A	Tumor	TCGA-RC-A7SF	Stage I	G2	579.0	Alive	male	asian	66.0
+TCGA-5C-AAPD-01A	Tumor	TCGA-5C-AAPD	Stage II	G1	20.0	Alive	male	asian	61.0
+TCGA-EP-A2KC-01A	Tumor	TCGA-EP-A2KC	Stage I	G3	19.0	Dead	male	black or african american	62.0
+TCGA-ZS-A9CF-02A	Tumor	TCGA-ZS-A9CF	Stage II	G2	2412.0	Alive	male	white	64.0
+TCGA-DD-A118-11A	Normal	TCGA-DD-A118	Stage II	G2	3437.0	Alive	female	white	77.0
+TCGA-2Y-A9H4-01A	Tumor	TCGA-2Y-A9H4	Stage I	G2	1452.0	Alive	male	black or african american	68.0
+TCGA-ES-A2HT-01A	Tumor	TCGA-ES-A2HT	Stage I	G2	438.0	Dead	male	black or african american	54.0
+TCGA-DD-A1EA-01A	Tumor	TCGA-DD-A1EA	Stage II	G2	2415.0	Alive	male	asian	68.0
+TCGA-HP-A5N0-01A	Tumor	TCGA-HP-A5N0			752.0	Dead	female	not reported	87.0
+TCGA-DD-AAVR-01A	Tumor	TCGA-DD-AAVR	Stage I	G2	2513.0	Alive	male	asian	44.0
+TCGA-DD-A4NJ-01A	Tumor	TCGA-DD-A4NJ	Stage II	G2	928.0	Alive	female	white	54.0
+TCGA-DD-AACS-01A	Tumor	TCGA-DD-AACS	Stage I	G3	1804.0	Alive	male	asian	39.0
+TCGA-DD-AADG-01A	Tumor	TCGA-DD-AADG	Stage IIIA	G3	1145.0	Alive	male	asian	70.0
+TCGA-DD-AAVV-01A	Tumor	TCGA-DD-AAVV	Stage II	G3	2455.0	Alive	male	asian	56.0
+TCGA-DD-A1EK-01A	Tumor	TCGA-DD-A1EK	Stage IVB	G2	558.0	Dead	female	white	64.0
+TCGA-NI-A4U2-01A	Tumor	TCGA-NI-A4U2	Stage IIIA	G1	1791.0	Dead	male	white	71.0
+TCGA-CC-A7II-01A	Tumor	TCGA-CC-A7II	Stage IIIA	G3	399.0	Alive	male	asian	54.0
+TCGA-G3-AAV6-01A	Tumor	TCGA-G3-AAV6	Stage IIIA	G3	65.0	Dead	female	white	53.0
+TCGA-DD-AAC9-01A	Tumor	TCGA-DD-AAC9	Stage I	G2	347.0	Alive	male	asian	51.0
+TCGA-RC-A7SK-01A	Tumor	TCGA-RC-A7SK	Stage I	G3	472.0	Alive	male	asian	59.0
+TCGA-DD-AAEA-01A	Tumor	TCGA-DD-AAEA	Stage I	G3	575.0	Alive	male	asian	65.0
+TCGA-DD-AAD0-01A	Tumor	TCGA-DD-AAD0	Stage I	G2	137.0	Alive	female	asian	73.0
+TCGA-DD-AAW2-01A	Tumor	TCGA-DD-AAW2	Stage I	G2	1855.0	Alive	male	asian	69.0
+TCGA-BC-A10R-01A	Tumor	TCGA-BC-A10R		G2	308.0	Dead	female	white	66.0
+TCGA-DD-A11D-11A	Normal	TCGA-DD-A11D	Stage I	G2	1560.0	Dead	female	white	57.0
+TCGA-BC-A10R-11A	Normal	TCGA-BC-A10R		G2	308.0	Dead	female	white	66.0
+TCGA-DD-AAD2-01A	Tumor	TCGA-DD-AAD2	Stage I	G2	658.0	Alive	male	asian	66.0
+TCGA-DD-AAVU-01A	Tumor	TCGA-DD-AAVU	Stage II	G2	2202.0	Alive	male	asian	46.0
+TCGA-DD-AAW0-01A	Tumor	TCGA-DD-AAW0	Stage I	G2	2015.0	Alive	male	asian	54.0
+TCGA-PD-A5DF-01A	Tumor	TCGA-PD-A5DF	Stage IIIB	G2	639.0	Dead	female	white	58.0
+TCGA-DD-A11B-01A	Tumor	TCGA-DD-A11B	Stage I	G2	14.0	Dead	male	white	73.0
+TCGA-EP-A2KB-01A	Tumor	TCGA-EP-A2KB	Stage I	G2	596.0	Dead	female	white	46.0
+TCGA-GJ-A6C0-01A	Tumor	TCGA-GJ-A6C0	Stage II	G2	31.0	Dead	female	white	75.0
+TCGA-DD-AADW-01A	Tumor	TCGA-DD-AADW	Stage I	G3	587.0	Alive	male	asian	48.0
+TCGA-K7-AAU7-01A	Tumor	TCGA-K7-AAU7	Stage II	G2	359.0	Alive	male	white	61.0
+TCGA-DD-AAD1-01A	Tumor	TCGA-DD-AAD1	Stage I	G4	564.0	Alive	female	asian	51.0
+TCGA-XR-A8TG-01A	Tumor	TCGA-XR-A8TG	Stage I	G2	898.0	Alive	male	white	58.0
+TCGA-ZP-A9CZ-01A	Tumor	TCGA-ZP-A9CZ		G1	706.0	Alive	male	asian	72.0
+TCGA-G3-A5SK-01A	Tumor	TCGA-G3-A5SK	Stage I	G1	744.0	Alive	male	white	58.0
+TCGA-CC-A3MB-01A	Tumor	TCGA-CC-A3MB	Stage IIIA	G1	315.0	Dead	male	asian	36.0
+TCGA-DD-A3A2-01A	Tumor	TCGA-DD-A3A2	Stage I	G1	2131.0	Dead	female	white	76.0
+TCGA-ZP-A9D0-01A	Tumor	TCGA-ZP-A9D0		G1	1091.0	Alive	female	black or african american	67.0
+TCGA-G3-A5SJ-01A	Tumor	TCGA-G3-A5SJ	Stage I	G2	698.0	Alive	male	white	59.0
+TCGA-HP-A5MZ-01A	Tumor	TCGA-HP-A5MZ	Stage I	G2	91.0	Dead	male	not reported	62.0
+TCGA-BC-A10Q-11A	Normal	TCGA-BC-A10Q			1135.0	Dead	female	white	72.0
+TCGA-2Y-A9H8-01A	Tumor	TCGA-2Y-A9H8		G2	633.0	Dead	female	white	85.0
+TCGA-DD-AACL-01A	Tumor	TCGA-DD-AACL	Stage I	G3	107.0	Dead	female	asian	66.0
+TCGA-CC-A7IG-01A	Tumor	TCGA-CC-A7IG	Stage II	G2	299.0	Dead	male	asian	47.0
+TCGA-DD-AAW3-01A	Tumor	TCGA-DD-AAW3	Stage I	G2	1633.0	Alive	male	asian	69.0
+TCGA-BW-A5NP-01A	Tumor	TCGA-BW-A5NP	Stage IV	G3	102.0	Alive	female	white	26.0
+TCGA-DD-AAEK-01A	Tumor	TCGA-DD-AAEK	Stage II	G3	1067.0	Alive	male	asian	51.0
+TCGA-DD-A73C-01A	Tumor	TCGA-DD-A73C	Stage IIIA	G1	701.0	Alive	female	white	65.0
+TCGA-ED-A8O6-01A	Tumor	TCGA-ED-A8O6	Stage IIIA	G3	56.0	Dead	female	asian	50.0
+TCGA-DD-AACJ-01A	Tumor	TCGA-DD-AACJ	Stage II	G2	2102.0	Alive	male	asian	75.0
+TCGA-DD-A116-11A	Normal	TCGA-DD-A116	Stage IIIA	G3	1622.0	Dead	male	asian	68.0
+TCGA-EP-A12J-01A	Tumor	TCGA-EP-A12J	Stage I	G1	570.0	Alive	male	black or african american	62.0
+TCGA-DD-AADP-01A	Tumor	TCGA-DD-AADP	Stage I	G3	458.0	Alive	male	asian	45.0
+TCGA-RC-A6M6-01A	Tumor	TCGA-RC-A6M6	Stage II	G3	9.0	Alive	male	white	75.0
+TCGA-UB-AA0U-01A	Tumor	TCGA-UB-AA0U	Stage II	G2	327.0	Alive	male	white	60.0
+TCGA-DD-A4NS-01A	Tumor	TCGA-DD-A4NS	Stage I	G2	2456.0	Dead	female	white	61.0
+TCGA-RC-A6M5-01A	Tumor	TCGA-RC-A6M5	Stage IVA	G2	15.0	Alive	female	white	20.0
+TCGA-DD-A4NL-01A	Tumor	TCGA-DD-A4NL	Stage I	G1	1711.0	Alive	male	white	46.0
+TCGA-DD-AADY-01A	Tumor	TCGA-DD-AADY	Stage I	G2	555.0	Alive	female	asian	55.0
+TCGA-DD-AAVX-01A	Tumor	TCGA-DD-AAVX	Stage II	G2	1718.0	Alive	male	asian	38.0
+TCGA-QA-A7B7-01A	Tumor	TCGA-QA-A7B7	Stage II	G2	94.0	Alive	male	black or african american	48.0
+TCGA-2Y-A9HB-01A	Tumor	TCGA-2Y-A9HB	Stage I	G2	260.0	Alive	male	not reported	66.0
+TCGA-DD-AADD-01A	Tumor	TCGA-DD-AADD	Stage I	G4	1231.0	Alive	male	asian	51.0
+TCGA-G3-A3CI-01A	Tumor	TCGA-G3-A3CI	Stage I	G2	180.0	Alive	male	white	71.0
+TCGA-CC-A7IL-01A	Tumor	TCGA-CC-A7IL	Stage IIIA	G1	278.0	Dead	male	asian	61.0
+TCGA-DD-AACG-01A	Tumor	TCGA-DD-AACG	Stage II	G4	469.0	Dead	male	asian	52.0
+TCGA-DD-A73A-01A	Tumor	TCGA-DD-A73A	Stage I	G2	728.0	Alive	male	white	71.0
+TCGA-ED-A66X-01A	Tumor	TCGA-ED-A66X	Stage IIIA	G3	406.0	Alive	male	asian	35.0
+TCGA-EP-A26S-11A	Normal	TCGA-EP-A26S	Stage I	G2	608.0	Alive	male	white	70.0
+TCGA-EP-A26S-01A	Tumor	TCGA-EP-A26S	Stage I	G2	608.0	Alive	male	white	70.0
+TCGA-G3-A25S-01A	Tumor	TCGA-G3-A25S	Stage I	G2	416.0	Dead	male	white	64.0
+TCGA-DD-A4NN-01A	Tumor	TCGA-DD-A4NN	Stage I	G3	899.0	Dead	female	white	56.0
+TCGA-G3-A25U-01A	Tumor	TCGA-G3-A25U	Stage I	G3	1636.0	Alive	female	asian	63.0
+TCGA-YA-A8S7-01A	Tumor	TCGA-YA-A8S7	Stage IIIA	G3	412.0	Dead	male	white	68.0
+TCGA-2Y-A9H6-01A	Tumor	TCGA-2Y-A9H6	Stage I			Alive	female	white	68.0
+TCGA-DD-A4NE-01A	Tumor	TCGA-DD-A4NE	Stage IIIA	G3	660.0	Dead	female	white	75.0
+TCGA-FV-A495-01A	Tumor	TCGA-FV-A495	Stage II	G2	1.0	Alive	female	white	51.0
+TCGA-DD-AAEG-01A	Tumor	TCGA-DD-AAEG	Stage I	G3	719.0	Alive	female	asian	59.0
+TCGA-UB-A7ME-01A	Tumor	TCGA-UB-A7ME	Stage I	G2	486.0	Alive	male	asian	51.0
+TCGA-DD-A39Y-01A	Tumor	TCGA-DD-A39Y	Stage I	G3	171.0	Dead	male	asian	67.0
+TCGA-DD-A4NA-01A	Tumor	TCGA-DD-A4NA	Stage IIIC	G3	1008.0	Alive	female	white	67.0
+TCGA-DD-A4NQ-01A	Tumor	TCGA-DD-A4NQ	Stage II	G3	373.0	Dead	male	white	60.0
+TCGA-DD-AAVY-01A	Tumor	TCGA-DD-AAVY	Stage IIIA	G2	1970.0	Alive	male	asian	56.0
+TCGA-ED-A4XI-01A	Tumor	TCGA-ED-A4XI	Stage II	G3	819.0	Alive	male	asian	58.0
+TCGA-LG-A6GG-01A	Tumor	TCGA-LG-A6GG	Stage III			Alive	female	white	79.0
+TCGA-DD-AAE4-01A	Tumor	TCGA-DD-AAE4	Stage I	G1	608.0	Alive	female	asian	49.0
+TCGA-CC-5260-01A	Tumor	TCGA-CC-5260	Stage IIIC	G1	87.0	Dead	female	asian	61.0
+TCGA-DD-A1EH-11A	Normal	TCGA-DD-A1EH	Stage III	G3	1495.0	Alive	male	white	23.0
+TCGA-G3-A3CJ-01A	Tumor	TCGA-G3-A3CJ	Stage II	G2	594.0	Alive	male	american indian or alaska native	52.0
+TCGA-DD-AACZ-01A	Tumor	TCGA-DD-AACZ	Stage I	G4	171.0	Dead	female	asian	63.0
+TCGA-G3-A5SM-01A	Tumor	TCGA-G3-A5SM	Stage II	G3	520.0	Alive	male	white	58.0
+TCGA-DD-A39V-01A	Tumor	TCGA-DD-A39V	Stage II	G3	643.0	Dead	male	white	77.0
+TCGA-BD-A3EP-01A	Tumor	TCGA-BD-A3EP	Stage I	G2	409.0	Alive	female	black or african american	75.0
+TCGA-BD-A3EP-11A	Normal	TCGA-BD-A3EP	Stage I	G2	409.0	Alive	female	black or african american	75.0
+TCGA-BW-A5NO-01A	Tumor	TCGA-BW-A5NO	Stage IIIA	G2	20.0	Alive	male	black or african american	50.0

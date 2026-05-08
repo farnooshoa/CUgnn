@@ -1,0 +1,59 @@
+gene_symbol,protein_name,functional_category,subcellular_localization,notes_from_paper
+SLC31A1,Solute carrier family 31 member 1 (CTR1),transporter,cell_membrane,Major plasma-membrane Cu importer
+SLC31A2,Solute carrier family 31 member 2 (CTR2),transporter,cell_membrane,Second Cu importer at the cell surface
+ATP7A,Copper-transporting ATPase 1 (Menkes),transporter,cell_membrane|golgi_apparatus,P1B-type ATPase; Menkes-disease gene; channels Cu into the secretory pathway
+ATP7B,Copper-transporting ATPase 2 (Wilson),transporter,golgi_apparatus,P1B-type ATPase; Wilson-disease gene; upregulated in breast cancer
+ATOX1,Antioxidant 1 / HAH1,transporter,cytoplasm,Cu chaperone to ATP7A/B; proposed transcription factor for cyclin D1 and SOD3; IHC-validated upregulation in breast tumor
+CCS,Copper chaperone for SOD1,transporter,cytoplasm,Delivers Cu to SOD1; also reported in nucleus; regulates HIF-1
+COX11,Cytochrome c oxidase assembly protein COX11,transporter,mitochondrion,Provides Cu to COX1/COX2 in mitochondria
+COX17,Cytochrome c oxidase copper chaperone COX17,transporter,mitochondrion,Chaperone upstream of SCO1/SCO2/COX11
+SCO1,Synthesis of cytochrome c oxidase 1,transporter,mitochondrion,Mitochondrial Cu delivery; Cu-binding thioredoxin-fold
+SCO2,Synthesis of cytochrome c oxidase 2,transporter,mitochondrion,Upregulated in breast cancer; Cu to COX2
+COMMD1,Copper metabolism MURR1 domain 1,transporter,cytoplasm|nucleus,Regulates ATP7B stability and Cu-vesicle trafficking
+CUTC,Copper homeostasis protein CutC homolog,transporter,cytoplasm|nucleus,Status as transporter vs enzyme is open per paper
+AOC1,Amine oxidase copper-containing 1 (diamine oxidase),enzyme,extracellular_space,Cu-containing amine oxidase
+AOC2,Amine oxidase copper-containing 2,enzyme,cell_membrane,Cu amine oxidase; low mRNA-protein correlation in breast
+AOC3,Amine oxidase copper-containing 3 (VAP-1),enzyme,cell_membrane,Cu amine oxidase; frequently downregulated; blue in Fig 3 cluster 8
+CP,Ceruloplasmin,enzyme,extracellular_space,Ferroxidase; main plasma Cu carrier; oxidises iron and delivers Cu
+DBH,Dopamine beta-hydroxylase,enzyme,extracellular_space,Cu-dependent monooxygenase
+ENOX1,Ecto-NOX disulfide-thiol exchanger 1,enzyme,cell_membrane|extracellular_space,Frequently downregulated across cancers
+ENOX2,Ecto-NOX disulfide-thiol exchanger 2,enzyme,cell_membrane|extracellular_space,Frequently upregulated; low mRNA-protein correlation
+HEPH,Hephaestin,enzyme,cell_membrane,Multicopper ferroxidase; ceruloplasmin homolog
+HEPHL1,Hephaestin-like 1,enzyme,cell_membrane,Upregulated in breast cancer
+LOX,Lysyl oxidase,enzyme,extracellular_space,ECM crosslinker; key for premetastatic niche; HIF-1 target
+LOXL1,Lysyl oxidase homolog 1,enzyme,extracellular_space,Upregulated in breast (cluster 8)
+LOXL2,Lysyl oxidase homolog 2,enzyme,nucleus|extracellular_space,Upregulated in breast (cluster 8); also has nuclear role
+LOXL3,Lysyl oxidase homolog 3,enzyme,cytoplasm|extracellular_space,ECM crosslinker family
+LOXL4,Lysyl oxidase homolog 4,enzyme,extracellular_space,ECM crosslinker family
+MAP2K1,Mitogen-activated protein kinase kinase 1 (MEK1),enzyme,cytoskeleton|cytoplasm|nucleus,Cu-dependent kinase in MAPK pathway; proliferation/invasion; added to list from literature
+MEMO1,Mediator of ErbB2-driven cell motility 1,enzyme,cytoplasm|nucleus,Cu-dependent redox; migration/EMT; added from literature
+MOXD1,Monooxygenase DBH-like 1,enzyme,endoplasmic_reticulum,Upregulated in breast (cluster 8)
+MOXD2P,Monooxygenase DBH-like 2 pseudogene,enzyme,endoplasmic_reticulum,Pseudogene; localisation assumed same as MOXD1
+MT-CO1,Mitochondrially encoded cytochrome c oxidase I,enzyme,mitochondrion,CuB site of cytochrome c oxidase
+MT-CO2,Mitochondrially encoded cytochrome c oxidase II,enzyme,mitochondrion,CuA site of cytochrome c oxidase
+PAM,Peptidylglycine alpha-amidating monooxygenase,enzyme,cell_membrane|extracellular_space,Cu-dependent amidating monooxygenase
+PARK7,Parkinsonism-associated deglycase (DJ-1),enzyme,cell_membrane|mitochondrion|nucleus,Cu-dependent enzyme; oxidative-stress sensor; Parkinson's disease gene
+SOD1,Superoxide dismutase 1 (Cu/Zn SOD),enzyme,cytoplasm|nucleus,Cytosolic antioxidant; receives Cu from CCS
+SOD3,Superoxide dismutase 3 (EC-SOD),enzyme,extracellular_space,Extracellular antioxidant; regulated by ATOX1
+TYR,Tyrosinase,enzyme,intracellular_vesicles,Cu-dependent melanin-synthesis enzyme
+TYRP1,Tyrosinase-related protein 1,enzyme,intracellular_vesicles,Upregulated in breast (cluster 5)
+AFP,Alpha-fetoprotein,other_or_unknown,extracellular_space,Cu-binding liver-secreted protein; downregulated in cluster 3 in breast
+ALB,Serum albumin,other_or_unknown,extracellular_space,Principal plasma Cu carrier by mass; low mRNA-protein correlation
+APP,Amyloid beta precursor protein,other_or_unknown,cell_membrane,Amyloidogenic; Cu role unclear
+CUTA,CutA divalent cation tolerance homolog,other_or_unknown,mitochondrion,Predicted mitochondrial; upregulated in breast cluster 3; localisation less stringent
+F5,Coagulation factor V,other_or_unknown,extracellular_space,Plasma protein reported to bind Cu; upregulated in breast cluster 1
+GPC1,Glypican 1,other_or_unknown,cell_membrane|extracellular_space,Heparan sulfate proteoglycan; Cu-binding
+LTF,Lactotransferrin,other_or_unknown,nucleus|extracellular_space,Cu/Fe-binding transferrin family
+MT3,Metallothionein 3,other_or_unknown,cytoplasm|extracellular_space,Metallothionein; Cu/Zn binder
+MT4,Metallothionein 4,other_or_unknown,extracellular_space,Metallothionein; Cu/Zn binder
+PRNP,Prion protein,other_or_unknown,cell_membrane|mitochondrion|cytoplasm|nucleus|golgi_apparatus,Amyloidogenic; Cu role unclear; frequently downregulated
+S100A5,S100 calcium-binding protein A5,other_or_unknown,nucleus,EF-hand; Cu-binding S100 family
+S100A12,S100 calcium-binding protein A12,other_or_unknown,cell_membrane|cytoskeleton|cytoplasm|extracellular_space,EF-hand; Cu-binding S100 family
+S100A13,S100 calcium-binding protein A13,other_or_unknown,cytoplasm|extracellular_space,EF-hand; Cu-binding S100 family
+S100B,S100 calcium-binding protein B,other_or_unknown,nucleus|extracellular_space,EF-hand; frequently downregulated in cancers
+SNCA,Alpha-synuclein,other_or_unknown,cell_membrane|cytoplasm|nucleus|extracellular_space,Amyloidogenic; Cu role unclear; frequently downregulated
+SPARC,Secreted protein acidic and cysteine rich,other_or_unknown,extracellular_space,Collagen-binding glycoprotein; invasion/metastasis; added from literature
+H3-3A,Histone H3.3 variant A,enzyme,nucleus,H3-H4 tetramer Cu2+ reductase; active site H113+C110; added from Attar et al. Science 2020
+H3-3B,Histone H3.3 variant B,enzyme,nucleus,H3-H4 tetramer Cu2+ reductase; active site H113+C110; added from Attar et al. Science 2020
+H3C1,Histone H3.1 (HIST1H3A),enzyme,nucleus,Replication-dependent H3; same H113/C110 active site; added from Attar et al. Science 2020
+H4C1,Histone H4 (HIST1H4A),enzyme,nucleus,H3-H4 tetramer partner in Cu2+ reduction; added from Attar et al. Science 2020

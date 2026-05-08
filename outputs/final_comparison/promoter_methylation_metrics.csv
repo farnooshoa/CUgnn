@@ -1,0 +1,7 @@
+task,features,roc_auc,balanced_accuracy,source
+tumor_vs_normal,expr_only,0.993,0.913,leakage audit
+tumor_vs_normal,expr + methylation (all regions),0.997,0.912,phase 3 methylation
+tumor_vs_normal,expr + methylation (promoter-only),0.997,0.9084,this run
+stage_early_vs_late,expr_only,0.668,0.525,stage task
+stage_early_vs_late,expr + methylation (all regions),0.667,0.518,phase 3 methylation
+stage_early_vs_late,expr + methylation (promoter-only),0.673,0.5993,this run
