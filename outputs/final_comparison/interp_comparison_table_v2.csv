@@ -1,0 +1,21 @@
+gene,saliency_rank,model_direction,log2FC,expected_stage,biology,agrees
+ATP7A,1,→ late,0.121,late,Cu efflux pump,True
+LTF,2,→ late,0.132,unknown,—,—
+SCO2,3,→ late,0.088,unknown,—,—
+S100A12,4,→ late,-1.371,unknown,—,—
+ATP7B,5,→ late,-0.362,late,"Cu efflux, HCC progression",True
+SLC31A2,6,→ late,-0.042,unknown,—,—
+COX11,7,→ late,0.036,unknown,—,—
+SLC31A1,8,→ late,-1.078,late,"Cu importer, elevated in proliferating cells",True
+SPARC,9,→ late,0.751,late,"ECM remodeling, tumor progression",True
+SCO1,10,→ late,-0.355,unknown,—,—
+PRNP,11,→ late,-1.189,early,"Cu binding, tumor suppressor role",False
+H3-3A,12,→ late,0.296,unknown,—,—
+AFP,13,→ late,1.731,unknown,—,—
+S100A5,14,→ late,0.027,unknown,—,—
+S100B,15,→ late,-0.038,unknown,—,—
+SNCA,16,→ late,-0.052,unknown,—,—
+CUTA,17,→ late,0.591,unknown,—,—
+MT3,18,→ late,0.359,early,"Metallothionein, protective",False
+ATOX1,19,→ late,0.471,late,"Cu chaperone, proliferation",True
+MT4,20,→ late,0.04,unknown,—,—
