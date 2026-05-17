@@ -1,0 +1,6 @@
+model,type,auc_mean,auc_std,bal_mean,bal_std
+gat,graph,0.6667,0.0174,0.5724,0.0211
+gcn,graph,0.6605,0.0103,0.5846,0.0244
+svm_rbf,classical,0.6441,0.012,0.5808,0.0189
+random_forest,classical,0.6242,0.0205,0.4986,0.006
+logreg,classical,0.5832,0.025,0.5655,0.016
