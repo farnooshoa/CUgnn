@@ -1,4 +1,4 @@
 cohort,normalization,roc_auc,balanced_accuracy
 TCGA-LIHC 5-fold CV,TCGA-internal,0.993,0.913
-GSE14520 external,z-score only,0.7155959595959596,0.5
-GSE14520 external,quantile + z-score,0.9167070707070708,0.6364141414141414
+GSE14520 external,z-score only,0.4824646464646465,0.5
+GSE14520 external,quantile + z-score,0.9367676767676768,0.7958080808080807

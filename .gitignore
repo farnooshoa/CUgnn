@@ -35,3 +35,7 @@ outputs/cu_followup_package.zip
 .env
 .env.*
 *.local
+
+# Virtual environment
+venv/
+.venv/

@@ -1,0 +1,21 @@
+gene,saliency_rank,saliency_value,model_direction,log2FC_tumor_vs_normal,FC_direction,biology,expected_stage
+ATOX1,1,-0.0189,→ early,0.471,up in tumor,"Cu chaperone, nuclear signaling, proliferation",late
+ATP7B,2,-0.0124,→ early,-0.362,down in tumor,"Cu efflux, cisplatin resistance, HCC progression",late
+SPARC,3,-0.0103,→ early,0.751,up in tumor,"ECM remodeling, tumor progression",late
+COX17,4,-0.0102,→ early,0.031,up in tumor,—,unknown
+SCO2,5,-0.0086,→ early,0.088,up in tumor,—,unknown
+ALB,6,-0.0072,→ early,-2.383,down in tumor,—,unknown
+ATP7A,7,-0.0065,→ early,0.121,up in tumor,Cu efflux pump,late
+SCO1,8,-0.0063,→ early,-0.355,down in tumor,—,unknown
+SLC31A1,9,-0.0061,→ early,-1.078,down in tumor,"Cu importer CTR1, elevated in proliferating cells",late
+S100A13,10,-0.0057,→ early,0.347,up in tumor,—,unknown
+SLC31A2,11,-0.0057,→ early,-0.042,down in tumor,—,unknown
+CUTA,12,-0.0056,→ early,0.591,up in tumor,—,unknown
+SOD1,13,-0.0049,→ early,-0.818,down in tumor,"Antioxidant, protective in early stage",early
+COX11,14,-0.0048,→ early,0.036,up in tumor,—,unknown
+APP,15,-0.0046,→ early,-0.59,down in tumor,—,unknown
+PRNP,16,-0.0042,→ early,-1.189,down in tumor,"Prion protein, Cu binding, tumor suppressor role",early
+MT-CO1,17,-0.0037,→ early,-1.141,down in tumor,—,unknown
+CCS,18,-0.0034,→ early,-0.487,down in tumor,—,unknown
+MT-CO2,19,-0.0032,→ early,-0.924,down in tumor,—,unknown
+CUTC,20,-0.0031,→ early,-0.232,down in tumor,—,unknown

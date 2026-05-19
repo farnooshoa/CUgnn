@@ -22,14 +22,14 @@
 | cohort | N | ROC-AUC | balanced acc |
 |---|---:|---:|---:|
 | TCGA-LIHC 5-fold CV (internal) | 424 | **0.993** | 0.913 |
-| **GSE14520 external** | 445 | **0.603** | 0.500 |
-| Δ (external − internal) | | **-0.390** | -0.413 |
+| **GSE14520 external** | 445 | **0.500** | 0.500 |
+| Δ (external − internal) | | **-0.493** | -0.413 |
 
 ## Interpretation
 
 ### Quick read
-- External ROC-AUC 0.603 vs TCGA-internal 0.993.
-- AUC drop of 0.390 is larger than expected — likely driven by platform differences (Affy probes + RMA normalisation do not map cleanly onto TCGA FPKM-UQ). Future work: quantile-normalise the external cohort to the TCGA distribution per gene.
+- External ROC-AUC 0.500 vs TCGA-internal 0.993.
+- AUC drop of 0.493 is larger than expected — likely driven by platform differences (Affy probes + RMA normalisation do not map cleanly onto TCGA FPKM-UQ). Future work: quantile-normalise the external cohort to the TCGA distribution per gene.
 - Balanced accuracy is more conservative than AUC on imbalanced cohorts; compare both.
 
 ### What this tells us
@@ -60,9 +60,9 @@ Hypothesis: the internal → external AUC drop is driven by **platform scale mis
 
 | normalisation | ROC-AUC | balanced acc |
 |---|---:|---:|
-| z-score only (TCGA µ/σ) | 0.716 | 0.500 |
-| **quantile + z-score** | **0.917** | **0.636** |
-| Δ | **+0.201** | +0.136 |
+| z-score only (TCGA µ/σ) | 0.482 | 0.500 |
+| **quantile + z-score** | **0.937** | **0.796** |
+| Δ | **+0.454** | +0.296 |
 
 ### Verdict
 - If Δ AUC > 0.10 → platform mismatch was the main issue; reporting with

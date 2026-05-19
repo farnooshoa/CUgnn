@@ -1,0 +1,55 @@
+gene,delta_expr,delta_meth,expr_dir,meth_dir,converges,in_top_sal,r
+SLC31A1,-0.0579,-0.0006,down in late,hypo in late,False,True,-0.0074
+SLC31A2,-0.0039,-0.0076,down in late,hypo in late,False,True,0.1148
+ATP7A,0.1488,0.0188,up in late,hyper in late,False,True,0.0125
+ATP7B,-0.1005,-0.0,down in late,hypo in late,False,True,-0.1102
+ATOX1,-0.5236,0.0103,down in late,hyper in late,True,True,-0.1359
+CCS,-0.2845,-0.0036,down in late,hypo in late,False,False,-0.0714
+COX11,0.0114,0.0002,up in late,hyper in late,False,True,0.0275
+COX17,-0.2593,0.0013,down in late,hyper in late,True,False,0.0569
+SCO1,-0.0645,0.0023,down in late,hyper in late,True,True,-0.0265
+SCO2,-0.0031,0.0003,down in late,hyper in late,True,True,-0.3167
+COMMD1,-0.1528,-0.0022,down in late,hypo in late,False,False,0.0115
+CUTC,-0.1667,0.001,down in late,hyper in late,True,False,0.0595
+AOC1,0.2103,,up in late,—,False,False,
+AOC2,0.0252,-0.02,up in late,hypo in late,True,False,-0.2051
+AOC3,-0.0901,0.0017,down in late,hyper in late,True,False,0.1506
+CP,-0.2112,,down in late,—,False,False,
+DBH,-0.1405,0.0008,down in late,hyper in late,True,False,0.1852
+ENOX1,0.0647,-0.0148,up in late,hypo in late,True,False,-0.0305
+ENOX2,0.0612,0.0135,up in late,hyper in late,False,False,-0.0422
+HEPH,0.018,-0.0014,up in late,hypo in late,True,False,0.4156
+HEPHL1,-0.0149,0.0193,down in late,hyper in late,True,False,-0.0904
+LOX,0.3613,0.0125,up in late,hyper in late,False,False,-0.2
+LOXL1,0.0393,0.0076,up in late,hyper in late,False,False,0.264
+LOXL2,0.1893,0.0018,up in late,hyper in late,False,False,0.1287
+LOXL3,0.0567,0.0049,up in late,hyper in late,False,False,-0.1764
+LOXL4,0.1417,0.0007,up in late,hyper in late,False,False,-0.3987
+MAP2K1,0.1193,0.001,up in late,hyper in late,False,False,0.019
+MEMO1,0.0742,-0.0023,up in late,hypo in late,True,False,-0.0455
+MOXD1,-0.0407,-0.0075,down in late,hypo in late,False,False,0.0131
+MOXD2P,0.0008,,up in late,—,False,False,
+MT-CO1,-0.1446,,down in late,—,False,False,
+MT-CO2,-0.1706,,down in late,—,False,False,
+PAM,0.3547,-0.0119,up in late,hypo in late,True,False,0.0349
+PARK7,-0.0437,-0.0021,down in late,hypo in late,False,False,-0.2126
+SOD1,-0.4206,0.0083,down in late,hyper in late,True,False,-0.4156
+SOD3,-0.0189,-0.0023,down in late,hypo in late,False,False,0.305
+TYR,0.038,-0.0027,up in late,hypo in late,True,False,0.05
+TYRP1,0.1142,-0.0219,up in late,hypo in late,True,False,0.0871
+AFP,0.4418,-0.0056,up in late,hypo in late,True,True,-0.6189
+ALB,-0.8675,-0.0003,down in late,hypo in late,False,False,-0.1258
+APP,0.0243,0.0058,up in late,hyper in late,False,False,-0.2843
+CUTA,-0.108,0.0003,down in late,hyper in late,True,True,0.0502
+F5,-0.5748,0.02,down in late,hyper in late,True,False,-0.5228
+GPC1,0.1986,-0.0137,up in late,hypo in late,True,False,-0.1727
+LTF,-0.0473,0.0411,down in late,hyper in late,True,True,0.2247
+MT3,0.0684,-0.0342,up in late,hypo in late,True,True,-0.2317
+MT4,0.0194,-0.0403,up in late,hypo in late,True,True,-0.0299
+PRNP,0.2141,-0.0095,up in late,hypo in late,True,True,0.4909
+S100A5,0.0244,0.0088,up in late,hyper in late,False,True,0.1229
+S100A12,0.0321,0.0065,up in late,hyper in late,False,True,0.3547
+S100A13,-0.121,-0.004,down in late,hypo in late,False,False,-0.2419
+S100B,-0.0157,-0.002,down in late,hypo in late,False,True,-0.0671
+SNCA,0.0622,0.0042,up in late,hyper in late,False,True,-0.1574
+SPARC,0.1312,-0.0016,up in late,hypo in late,True,True,0.103
