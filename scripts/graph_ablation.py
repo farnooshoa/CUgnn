@@ -163,7 +163,7 @@ curated graph is useless — only that at this scale, raw GAT attention is
 powerful enough to find its own neighbours from pure features. On a larger
 proteome (hundreds to thousands of nodes), the inductive bias of a curated
 graph becomes more important.
-""")
+""", encoding="utf-8")
     print(f"\n[ablation] wrote {OUT/'graph_ablation.md'}")
 
 

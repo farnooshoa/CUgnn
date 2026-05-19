@@ -177,7 +177,7 @@ def main():
     paper_df = pd.DataFrame(paper_edges)
     paper_df.to_csv(OUT / "histone_paper_edge_attention.csv", index=False)
     print("\n[histone] attention on paper-proposed histone edges:")
-    print(paper_df.to_string(index=False))
+    print(paper_df.to_string(index=False).encode("ascii", errors="replace").decode("ascii"))
 
     df = pd.DataFrame(rows).round(4)
     df.to_csv(OUT / "histone_results_metrics.csv", index=False)
@@ -291,7 +291,7 @@ the framework is **keeping up with the field**.
 - `outputs/final_comparison/histone_node_importance.csv` — saliency for all 58 genes
 - `outputs/final_comparison/histone_top_attention.csv` — top GAT attention edges
 - `outputs/final_comparison/histone_paper_edge_attention.csv` — per-paper-edge attention
-""")
+""", encoding="utf-8")
     print(f"\n[histone] wrote {OUT/'histone_results.md'}")
 
 
